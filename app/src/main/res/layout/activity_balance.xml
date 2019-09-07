@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BalanceActivity"
+    android:background="@color/gree">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/signUp_back_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/setting"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        android:id="@+id/card_view">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/cn_root">
+
+            <TextView
+                android:id="@+id/your_balance_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_balance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/pupler"
+                />
+
+            <TextView
+                android:id="@+id/your_balance_value_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/your_balance_id"
+                app:layout_constraintTop_toBottomOf="@id/your_balance_id"
+                android:text="@string/your_balance_value"
+                />
+
+            <TextView
+                android:id="@+id/withdraw_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/your_balance_id"
+                app:layout_constraintTop_toBottomOf="@id/your_balance_value_id"
+                android:textColor="@color/pupler"
+                android:layout_marginTop="15dp"
+                android:text="@string/withdraw"/>
+
+           <TextView
+               android:id="@+id/operation_num_value"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toBottomOf="@id/withdraw_id"
+               app:layout_constraintStart_toStartOf="@id/withdraw_id"
+               android:text="@string/operation_num"/>
+
+            <TextView
+                android:id="@+id/money_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/withdraw_id"
+                app:layout_constraintStart_toEndOf="@id/operation_num_value"
+                android:layout_marginStart="15dp"
+                android:text="@string/money_value"/>
+
+            <TextView
+                android:id="@+id/time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/withdraw_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/time_value"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="@string/accept_it"
+                app:layout_constraintTop_toBottomOf="@id/operation_num_value"
+                android:layout_marginTop="10dp"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/withdraw_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card_view"
+        app:layout_constraintStart_toStartOf="@id/card_view"
+        app:layout_constraintEnd_toEndOf="@id/card_view"
+        android:background="@drawable/button_purple"
+        android:text="@string/withdraw_operation"
+        android:layout_marginTop="20dp"/>
+
+
+</android.support.constraint.ConstraintLayout>

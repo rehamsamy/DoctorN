@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SuggestionComplaintsActivity"
+    android:background="@color/gree">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/signUp_back_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/setting"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <EditText
+        android:id="@+id/msg_title_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/app_bar"
+        app:layout_constraintEnd_toEndOf="@id/app_bar"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/msg_title"
+        android:background="@drawable/edit_round"
+        android:padding="10dp"
+        android:textColor="@color/pupler"
+        android:textColorHint="@color/pupler"
+        android:textAlignment="viewStart"
+        />
+
+    <EditText
+        android:id="@+id/msg_body_id"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        app:layout_constraintStart_toStartOf="@id/msg_title_id"
+        app:layout_constraintEnd_toEndOf="@id/msg_title_id"
+        app:layout_constraintTop_toBottomOf="@id/msg_title_id"
+        android:background="@drawable/edit_round"
+        android:ems="10"
+        android:maxLines="10"
+        android:gravity="top|start"
+        android:layout_marginTop="10dp"
+        android:hint="@string/msg_body"
+        android:textColor="@color/pupler"
+        android:padding="10dp"
+        android:textColorHint="@color/pupler"
+        android:textAlignment="viewStart"/>
+
+
+
+    <Button
+        android:id="@+id/attatch_img_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/msg_title_id"
+        app:layout_constraintEnd_toEndOf="@id/msg_title_id"
+        app:layout_constraintTop_toBottomOf="@id/msg_body_id"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/camera"
+        android:background="@drawable/edit_round"
+        android:drawablePadding="20dp"
+        android:text="@string/attatch_img"
+        android:textAllCaps="false"
+        android:textColor="@color/pupler"
+        android:textAlignment="viewStart"
+        android:gravity="start|center_vertical" />
+
+<Button
+    android:id="@+id/send_btn_id"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/send"
+    android:background="@drawable/button_purple"
+    app:layout_constraintStart_toStartOf="@id/msg_body_id"
+    app:layout_constraintEnd_toEndOf="@id/msg_body_id"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_marginTop="30dp"
+    android:textColor="@color/White"
+    android:textAllCaps="false"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="15dp"
+    />
+
+</android.support.constraint.ConstraintLayout>

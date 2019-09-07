@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradiant_background">
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="232dp"
+            android:layout_height="69dp"
+            android:src="@drawable/logo"
+            android:id="@+id/logo_img"/>
+
+
+        <FrameLayout
+            android:id="@+id/card_view"
+            android:layout_width="0dp"
+            android:layout_height="320dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_img"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/edit_round"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/signup_hello"
+                    android:textColor="@color/pupler"
+                    android:id="@+id/hello_msg"
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <EditText
+                    android:id="@+id/work_days_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_round"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hello_msg"
+                    android:hint="@string/choosing_day"
+                    android:drawableStart="@drawable/year"
+                    android:textSize="14sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:drawablePadding="20dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="30dp"
+                    android:textAlignment="viewStart"
+                    />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/work_days_input"
+                    app:layout_constraintEnd_toEndOf="@id/work_days_input"
+                    app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                    android:hint="@string/counseling_time"
+                    android:id="@+id/counseling_time_input"
+                    android:drawableStart="@drawable/year"
+                    android:background="@drawable/edit_round"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"/>
+
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/work_days_input"
+                    app:layout_constraintEnd_toEndOf="@id/work_days_input"
+                    app:layout_constraintTop_toBottomOf="@+id/counseling_time_input"
+                    android:hint="@string/counseling_price"
+                    android:id="@+id/price_input"
+                    android:drawableStart="@drawable/year"
+                    android:background="@drawable/edit_round"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="15dp"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textAlignment="viewStart"
+                    />
+
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:layout_width="183dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_background"
+                android:textColor="@color/pupler"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="center"
+                android:text="@string/create_account"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/create_account_btn"
+                android:textSize="18sp"
+
+                />
+
+        </FrameLayout>
+
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

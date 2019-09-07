@@ -1,0 +1,225 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContinuRegisterActivity"
+    android:background="@drawable/gradiant_background">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_width="232dp"
+                android:layout_height="69dp"
+                android:src="@drawable/logo"
+                android:id="@+id/logo_img"/>
+
+
+            <FrameLayout
+                android:id="@+id/card_view"
+                android:layout_width="0dp"
+                android:layout_height="480dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo_img"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                >
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="460dp"
+                    android:background="@drawable/edit_round"
+                    android:padding="10dp">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/signup_msg_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/signup_msg"
+                        android:ellipsize="middle"
+                        android:minLines="2"
+                        android:maxLines="2"/>
+
+
+
+                    <EditText
+                        android:id="@+id/graduate_university_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_round"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/signup_msg_id"
+                        android:hint="@string/graduate_university"
+                        android:drawableStart="@drawable/certificate"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:drawablePadding="20dp"
+                        android:textAlignment="viewStart"
+                        android:padding="10dp"
+                        android:layout_marginTop="20dp"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/graduate_university_input"
+                        android:hint="@string/graduate_year"
+                        android:id="@+id/graduation_year_input"
+                        android:drawableStart="@drawable/certificate"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+
+                    <EditText
+                        android:id="@+id/certification_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/graduation_year_input"
+                        android:hint="@string/certificate"
+                        android:drawableStart="@drawable/information"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="textEmailAddress"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/degree_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/certification_input"
+                        android:hint="@string/degree"
+                        android:drawableStart="@drawable/bag"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+
+                    <EditText
+                        android:id="@+id/profession_license_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/degree_input"
+                        android:hint="@string/profession_license"
+                        android:drawableStart="@drawable/book"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+
+                    <EditText
+                        android:id="@+id/language_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/profession_license_input"
+                        android:hint="@string/language"
+                        android:drawableStart="@drawable/languages"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+                    <CheckBox
+                        android:id="@+id/accept_checkbox_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accept_policy"
+                        app:layout_constraintTop_toBottomOf="@id/language_input"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        android:layout_marginTop="8dp"
+                        android:textSize="10sp"/>
+
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <Button
+                    android:layout_width="183dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/pupler"
+                    android:text="@string/continu"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:id="@+id/continu_btn"
+                    android:elevation="32dp"
+                    android:textSize="18sp"
+
+                    />
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/have_account_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/have_account"
+                app:layout_constraintTop_toBottomOf="@id/card_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="50dp"
+                android:textColor="@color/White"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:padding="10dp"
+                android:fontFamily="sans-serif-condensed"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

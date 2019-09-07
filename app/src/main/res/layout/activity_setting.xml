@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity"
+    android:background="@color/White">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/signUp_back_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/setting"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/notification_txtV_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/onlin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/notification_switch_id"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/notification_txtV_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_balance"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        android:layout_marginTop="15dp"
+        android:id="@+id/add_balance_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/add_balance_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_card"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        android:layout_marginTop="15dp"
+        android:id="@+id/credit_card_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/credit_card_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view3"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_language"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view3"
+        android:layout_marginTop="15dp"
+        android:id="@+id/language_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/language_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view4"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suggestions_complaints"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view4"
+        android:layout_marginTop="20dp"
+        android:id="@+id/suggestions_complaints_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/suggestions_complaints_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view5"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_conditions"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view5"
+        android:layout_marginTop="15dp"
+        android:id="@+id/terms_conditions_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/terms_conditions_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view6"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy_policy"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view6"
+        android:layout_marginTop="15dp"
+        android:id="@+id/privacy_policy_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/privacy_policy_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gree"
+        android:id="@+id/view7"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_app"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view7"
+        android:layout_marginTop="15dp"
+        android:id="@+id/about_app_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/about_app_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view8"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/log_out"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintTop_toBottomOf="@id/view8"
+        android:layout_marginTop="40dp"
+        android:id="@+id/log_out_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

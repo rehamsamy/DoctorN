@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gree"
+    >
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="vertical">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/constraint_background"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/specialist_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specialist"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/specialist_value_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specialist_value"
+            android:textColor="@color/pupler"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/specialist_id"
+            android:layout_marginStart="15dp"
+            android:textAlignment="viewStart"
+            android:textSize="12sp"/>
+
+
+        <TextView
+            android:id="@+id/specialist_subject_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/specialist_value_id"
+            app:layout_constraintTop_toBottomOf="@id/specialist_value_id"
+            android:layout_marginTop="8dp"
+            android:textAlignment="viewStart"
+            android:text="@string/privacy_policy_subject"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cn2"
+        app:layout_constraintStart_toStartOf="@id/cn1"
+        app:layout_constraintEnd_toEndOf="@id/cn1"
+        app:layout_constraintTop_toBottomOf="@id/cn1"
+        android:background="@drawable/constraint_background"
+        android:layout_marginTop="15dp"
+        android:elevation="10dp"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/study_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/study"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/study_value_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specialist_value"
+            android:textColor="@color/pupler"
+            app:layout_constraintTop_toTopOf="@id/study_id"
+            app:layout_constraintStart_toEndOf="@id/study_id"
+            android:layout_marginStart="15dp"
+            android:textSize="12sp"/>
+
+
+        <TextView
+            android:id="@+id/study_subject_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/study_value_id"
+            app:layout_constraintTop_toBottomOf="@id/study_value_id"
+            android:layout_marginTop="8dp"
+            android:textAlignment="viewStart"
+            android:text="@string/privacy_policy_subject"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cn3"
+        app:layout_constraintStart_toStartOf="@id/cn1"
+        app:layout_constraintEnd_toEndOf="@id/cn1"
+        app:layout_constraintTop_toBottomOf="@id/cn2"
+        android:background="@drawable/constraint_background"
+        android:layout_marginTop="15dp"
+        android:elevation="10dp"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/job_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/job"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/job_value_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specialist_value"
+            android:textColor="@color/pupler"
+            app:layout_constraintTop_toTopOf="@id/job_id"
+            app:layout_constraintStart_toEndOf="@id/job_id"
+            android:layout_marginStart="15dp"
+            android:textSize="12sp"/>
+
+
+        <TextView
+            android:id="@+id/study_subject_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/job_value_id"
+            app:layout_constraintTop_toBottomOf="@id/job_value_id"
+            android:layout_marginTop="8dp"
+            android:textAlignment="viewStart"
+            android:text="@string/privacy_policy_subject"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cn4"
+        app:layout_constraintStart_toStartOf="@id/cn1"
+        app:layout_constraintEnd_toEndOf="@id/cn1"
+        app:layout_constraintTop_toBottomOf="@id/cn3"
+        android:background="@drawable/constraint_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15dp"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        >
+        <TextView
+            android:id="@+id/language_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/language_value_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specialist_value"
+            android:textColor="@color/pupler"
+            app:layout_constraintTop_toTopOf="@id/language_id"
+            app:layout_constraintStart_toEndOf="@id/language_id"
+            android:textSize="12sp"
+            android:layout_marginStart="15dp"
+            android:textAlignment="viewStart"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

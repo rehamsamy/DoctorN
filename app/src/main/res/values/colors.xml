@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="White">#FFFFFF</color>
+    <color name="gree">#efeeee</color>
+    <color name="pupler">#8B83F4</color>
+    <color name="black">#000</color>
+    <color name="gray">#d0d1d1</color>
+    <color name="blue">#4236e2</color>
+</resources>
