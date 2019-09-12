@@ -4,21 +4,32 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PreferenceHelper {
-    public static final String lang_selected="language";
-    private static final String ARB_LANGUAGE="lang";
 
-    public static SharedPreferences getSharedPreferences(Context context){
-        return context.getSharedPreferences(ARB_LANGUAGE,Context.MODE_PRIVATE);
+    private static final String APP_Language = "APP_Language";
+
+
+    // properties
+//    private static final String SOME_STRING_VALUE = "SOME_STRING_VALUE";
+    public static final String select_lang = "Language";
+    // other properties...
+
+    private PreferenceHelper() {
     }
 
-    public static String getValue(Context context){
-        SharedPreferences preferences=getSharedPreferences(context);
-        return preferences.getString(lang_selected,"en");
+    private static SharedPreferences getSharedPreferences(Context context) {
+        return context.getSharedPreferences(APP_Language, Context.MODE_PRIVATE);
     }
 
-    public static void setNewValue(Context context,String newValue){
-       SharedPreferences.Editor editor=getSharedPreferences(context).edit();
-       editor.putString(lang_selected,newValue);
-       editor.commit();
+    public static String getValue(Context context) {
+        return getSharedPreferences(context).getString(select_lang, "en");
     }
+
+    public static void setNewValue(Context context, String newValue) {
+        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(select_lang, newValue);
+        editor.commit();
+    }
+
 }
+
+

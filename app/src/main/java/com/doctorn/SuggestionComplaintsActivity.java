@@ -1,8 +1,6 @@
 package com.doctorn;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.doctorn.models.UserModel;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
-import com.fourhcode.forhutils.Futils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -82,7 +80,7 @@ public class SuggestionComplaintsActivity extends AppCompatActivity {
         map.put("title",msgTitleInput.getText().toString());
         map.put("message",msgBodyInput.getText().toString());
         map.put("user_id",LoginActivity.user.getId());
-        map.put("api_token",LoginActivity.userModel.getToken());
+        map.put("api_token", LoginActivity.userModel.getToken());
 
         final RequestBody requestBody=RequestBody.create(MediaType.parse("image/jpeg"),bytes);
         MultipartBody.Part part=MultipartBody.Part.createFormData("image","image.jpeg",requestBody);

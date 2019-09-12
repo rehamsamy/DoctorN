@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name" translatable="false">DoctorN</string>
+    <string name="hello" translatable="false">أهلا وسهلا بك</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="forget_password" translatable="false">نسيت كلمة المرور؟</string>
+    <string name="signin" translatable="false">تسجيل الدخول</string>
+    <string name="dont_have_account" translatable="false">لا يوجد لديك حساب ؟ انشئ حساب جديد!</string>
+    <string name="login_as_doctor" translatable="false">الدخول كطبيب</string>
+    <string name="full_name" translatable="false">الاسم بالكامل</string>
+    <string name="phone" translatable="false">رقم الهاتف</string>
+    <string name="age" translatable="false">العمر</string>
+    <string name="type">النوع</string>
+    <string name="have_account" translatable="false">لديك حساب؟ تسجيل الدخول!</string>
+    <string name="continu" translatable="false">استمرار</string>
+    <string name="send" translatable="false">ارسال</string>
+    <string name="notification" translatable="false">Notification</string>
+    <string name="empty_list" translatable="false">"لا توجد بيانات... "</string>
+    <string name="notification_label">توجد اشعارات من مصطفي</string>
+    <string name="setting">الاعدادات</string>
+    <string name="add_balance">اضافة رصيد</string>
+    <string name="credit_card">بطاقة الائتمان</string>
+    <string name="suggestions_complaints">الاقتراحات والشكاوي</string>
+    <string name="terms_conditions">الشروط والاحكام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="about_app">عن التطبيق</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="msg_title">عنوان الرسالة</string>
+    <string name="msg_body">الرسالة</string>
+    <string name="attatch_img">ارفاق صورة</string>
+    <string name="your_balance">رصيدك:</string>
+    <string name="your_balance_value">99 رس</string>
+    <string name="withdraw">عملية السحب</string>
+    <string name="my_account">حسابي</string>
+    <string name="doctor_name">اسم الطبيب</string>
+    <string name="account_email_txt">الايميل:</string>
+    <string name="email_value">adel@gmail.com</string>
+    <string name="account_phone_txt">رقم الهاتف:</string>
+    <string name="phone_value">01234689987</string>
+    <string name="account_age_txt">العمر:</string>
+    <string name="age_value">24</string>
+    <string name="account_gender_txt">النوع:</string>
+    <string name="gender_value">ذكر</string>
+    <string name="account_balance">Balance</string>
+    <string name="account_setting">الاعدادات</string>
+    <string name="conversation">المحادثات</string>
+    <string name="signup_msg">"من فضلك تاكد صحة البيانات التي قمت بادخالها "</string>
+    <string name="graduate_university">Graduate University</string>
+    <string name="graduate_year">Year og Graduation</string>
+    <string name="certificate">Certification</string>
+    <string name="degree">Degree</string>
+    <string name="profession_license">Profession License</string>
+    <string name="language">اللغات</string>
+    <string name="accept_policy">Accept all Privacy and Policy</string>
+    <string name="add_credit_card">اضافة بطاقة ائتمان</string>
+    <string name="credit_msg">محتوي النص فارغ محتوي النص فارغ محتوي النص فارغ محتوي النص فارغ</string>
+    <string name="credit_number">Credit Number</string>
+    <string name="expire_date_id">تاريخ الانتهاء</string>
+    <string name="cvv">CVV</string>
+    <string name="ok">موافقة</string>
+    <string name="signup_hello">اهلا وسهلا بك</string>
+    <string name="choosing_day">اختار ايام العمل</string>
+    <string name="counseling_time">وقت الاستشارة</string>
+    <string name="counseling_price">سعر الاستشارة</string>
+    <string name="create_account">انشاء حساب</string>
+    <string name="privecy_label">Paragraph Label</string>
+    <string name="privacy_policy_subject">محتوي النص فارغ محتوي النص فارغ محتوي النص فارغ محتوي النص فارغ</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="conversation_time">3:00</string>
+    <string name="type_msg_here">اكتب رسالتك هنا</string>
+    <string name="counseling_start">ابدأ الاستشارة</string>
+    <string name="counseling_end">انهاء الاستشارة</string>
+    <string name="counseling_timer">3:00</string>
+    <string name="specialist">التخصص</string>
+    <string name="specialist_value">value value</string>
+    <string name="study">الدراسة</string>
+    <string name="job">الوظيفة</string>
+    <string name="password_empty">من فضلك ادخل كلمه المرور</string>
+    <string name="email_empty">من فضلك ادخل الايميل</string>
+    <string name="email_invalid">من فضلك ادحل بريد الكتروني صالح</string>
+    <string name="edit_text_empty">المحتوي فارغ</string>
+    <string name="change_password">تغيير كلمه المرور</string>
+    <string name="old_password">كلمه المرور القديمة</string>
+    <string name="new_password">كلمه المرور الحديثة</string>
+    <string name="confirm_new_password">تاكي كلمه المرور</string>
+    <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="change_language">تغيير اللغه</string>
+    <string name="arabic">العربية</string>
+    <string name="english">English</string>
+    <string name="internet_offline">Make sure that internet is connected?!!</string>
+    <string name="withdraw_operation">Do Operation</string>
+    <string name="operation_num">operation num 1#</string>
+    <string name="money_value">1200 RS</string>
+    <string name="time_value">1/1/2019</string>
+    <string name="accept_it">الموافقة عليها</string>
+    <string name="register_as_doctor">Register as Doctor</string>
+    <string name="internal">باطنة</string>
+    <string name="like_count">250</string>
+    <string name="our_page">صفحاتنا</string>
+    <string name="account">حسابي</string>
+    <string name="article_label">عنوان المقالة</string>
+    <string name="reservation">حجز</string>
+    <string name="reservate_doctor">حجز الطبيب</string>
+    <string name="rate_doctor">تقييم الطبيب</string>
+    <string name="avilable_days">الايام المتاحة</string>
+    <string name="doctors">الاطباء</string>
+    <string name="search">بحث</string>
+    <string name="credit_name">الاسم في البطاقة</string>
+    <string name="service_value">Consult remotly medicine</string>
+</resources>

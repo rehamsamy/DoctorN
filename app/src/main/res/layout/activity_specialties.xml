@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.SpecialtiesActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/signUp_back_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/notifcaition_solid" />
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/specialist"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toTopOf="@id/cn"
+        android:id="@+id/specialist_recycler_id"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toTopOf="@id/cn"
+        android:id="@+id/empty_list"
+        android:visibility="gone"/>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toTopOf="@id/cn"
+        android:id="@+id/progress_id"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cn"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/specialist_recycler_id"
+        android:background="@color/White"
+        android:layout_marginTop="10dp"
+        android:padding="8dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/chat"
+            android:text="@string/conversation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/specialties_id"
+            android:layout_marginTop="10dp"
+            android:id="@+id/conversation_id"
+            />
+
+
+        <TextView
+            android:id="@+id/specialties_id"
+            android:textColor="@color/pupler"
+            android:drawableTop="@drawable/setion_blue"
+            android:text="@string/specialist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/conversation_id"
+            app:layout_constraintStart_toEndOf="@id/conversation_id"
+            app:layout_constraintEnd_toStartOf="@id/our_page_id"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="30dp"
+            />
+
+        <TextView
+            android:id="@+id/our_page_id"
+            android:drawableTop="@drawable/mypage"
+            android:text="@string/our_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/conversation_id"
+            app:layout_constraintStart_toEndOf="@id/specialties_id"
+            app:layout_constraintEnd_toStartOf="@id/my_account_id"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="30dp"
+            />
+
+
+        <TextView
+            android:id="@+id/my_account_id"
+            android:drawableTop="@drawable/profile"
+            android:text="@string/account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/conversation_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/our_page_id"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

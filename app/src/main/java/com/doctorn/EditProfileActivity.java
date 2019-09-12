@@ -12,13 +12,11 @@ import android.widget.Toast;
 
 import com.doctorn.models.User;
 import com.doctorn.models.UserModel;
-import com.doctorn.myAccount.MyAccountActivity;
+import com.doctorn.userAccount.userAccount.UserAccountActivity;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,7 +74,7 @@ public class EditProfileActivity extends AppCompatActivity {
         retrofitInterface= RetrofitClientInstance.getRetrofit();
       Call<UserModel> call=retrofitInterface.updateProfile(Integer.parseInt(ageInput.getText().toString()),
               LoginActivity.user.getUserType(),"adel@gmail.com",
-              nameInput.getText().toString(),LoginActivity.userModel.getToken(),typeInput.getText().toString(),
+              nameInput.getText().toString(), LoginActivity.userModel.getToken(),typeInput.getText().toString(),
               LoginActivity.user.getId(),phoneInput.getText().toString());
 
       call.enqueue(new Callback<UserModel>() {
@@ -89,7 +87,7 @@ public class EditProfileActivity extends AppCompatActivity {
                   Log.v(TAG,"error"+response.body().getMessage().toString());
                   User user=response.body().getUser();
                   Toast.makeText(EditProfileActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
-                  Intent intent=new Intent(EditProfileActivity.this, MyAccountActivity.class);
+                  Intent intent=new Intent(EditProfileActivity.this, UserAccountActivity.class);
                   intent.putExtra("update_data",user);
                   startActivity(intent);
               }

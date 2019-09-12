@@ -1,5 +1,7 @@
 package com.doctorn.utils;
 
+import com.doctorn.models.ReviewModel;
+import com.doctorn.models.SpecialtiesModel;
 import com.doctorn.models.UserModel;
 
 import java.util.Map;
@@ -51,5 +53,17 @@ public interface RetrofitInterface {
 
     @GET("api/doctorprivacy")
     Call<UserModel> getPrivacyAndPolicy();
+
+
+    @GET("api/getdoctorspecialties")
+    Call<SpecialtiesModel> getSpecialities(@QueryMap Map<String,Object> map);
+
+    @GET("api/getreviewbyuserid")
+    Call<ReviewModel> getReviewByUserId(@QueryMap Map<String,Object>map);
+
+    @GET("api/getreviewbydoctorid")
+    Call<ReviewModel> getReviewByDoctorId(@QueryMap Map<String,Object> map);
+
+
 
 }

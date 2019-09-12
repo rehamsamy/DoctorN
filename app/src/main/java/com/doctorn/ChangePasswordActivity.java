@@ -7,12 +7,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.doctorn.models.UserModel;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

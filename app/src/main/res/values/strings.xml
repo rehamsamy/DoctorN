@@ -1,38 +1,38 @@
 <resources>
-    <string name="app_name">DoctorN</string>
-    <string name="hello">أهلا وسهلا بك</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="forget_password">Forget Password?</string>
-    <string name="signin">Sign In</string>
-    <string name="dont_have_account">Dont have an account? Create account.</string>
-    <string name="login_as_doctor">Login as Doctor</string>
-    <string name="full_name">Full Name</string>
-    <string name="phone">Phone</string>
-    <string name="age">Age</string>
-    <string name="type">Type</string>
-    <string name="have_account">Have an account? LogIn.</string>
-    <string name="continu">Continue</string>
-    <string name="send">Send</string>
-    <string name="notification">Notification</string>
-    <string name="empty_list">No data found....</string>
-    <string name="notification_label">there is  notification from moustafa</string>
+    <string name="app_name" translatable="false">DoctorN</string>
+    <string name="hello" translatable="false">welcome in doctorN...</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="forget_password" translatable="false">Forget password?</string>
+    <string name="signin" translatable="false">Login</string>
+    <string name="dont_have_account" translatable="false">I dont have an accoint? create new?!!</string>
+    <string name="login_as_doctor" translatable="false">Login as Doctor</string>
+    <string name="full_name" translatable="false">Full Name</string>
+    <string name="phone" translatable="false">Phone</string>
+    <string name="age" translatable="false">Age</string>
+    <string name="type">النوع</string>
+    <string name="have_account" translatable="false">Have an account? Login !!</string>
+    <string name="continu" translatable="false">Continue</string>
+    <string name="send" translatable="false">Send</string>
+    <string name="notification" translatable="false">Notification</string>
+    <string name="empty_list" translatable="false">"No data Found ...."</string>
+    <string name="notification_label">there is notification from mus</string>
     <string name="setting">Setting</string>
     <string name="add_balance">Add Balance</string>
-    <string name="credit_card">Credit Card</string>
-    <string name="suggestions_complaints">Suggestions and Complaints</string>
+    <string name="credit_card">Cred Card</string>
+    <string name="suggestions_complaints">Suggestion and Complaints</string>
     <string name="terms_conditions">Terms and Conditions</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="about_app">About App</string>
-    <string name="log_out">Logout</string>
-    <string name="msg_title">Message title</string>
+    <string name="privacy_policy">Privacy and Policy</string>
+    <string name="about_app">about app</string>
+    <string name="log_out">Log out</string>
+    <string name="msg_title">Message Title</string>
     <string name="msg_body">Message</string>
-    <string name="attatch_img">Attatch photo</string>
-    <string name="your_balance">Your balance:</string>
-    <string name="your_balance_value">99   RS</string>
+    <string name="attatch_img">Attatch Photo</string>
+    <string name="your_balance">Your Balance:</string>
+    <string name="your_balance_value">99 RS</string>
     <string name="withdraw">Withdraw Operation</string>
-    <string name="my_account">My Account</string>
-    <string name="doctor_name">Doctor Name</string>
+    <string name="my_account">My account</string>
+    <string name="doctor_name">Doctor name</string>
     <string name="account_email_txt">Email:</string>
     <string name="email_value">adel@gmail.com</string>
     <string name="account_phone_txt">Phone:</string>
@@ -40,52 +40,51 @@
     <string name="account_age_txt">Age:</string>
     <string name="age_value">24</string>
     <string name="account_gender_txt">Gender:</string>
-    <string name="gender_value">male</string>
+    <string name="gender_value">ذكر</string>
     <string name="account_balance">Balance</string>
     <string name="account_setting">Setting</string>
     <string name="conversation">Conversation</string>
-    <string name="signup_msg">You must make sure that this data is correct , will be reviewed and accept it.</string>
+    <string name="signup_msg">"Make sure that data is correct to be reviewed? "</string>
     <string name="graduate_university">Graduate University</string>
     <string name="graduate_year">Year og Graduation</string>
     <string name="certificate">Certification</string>
     <string name="degree">Degree</string>
     <string name="profession_license">Profession License</string>
-    <string name="language">Language</string>
+    <string name="language">اللغات</string>
     <string name="accept_policy">Accept all Privacy and Policy</string>
     <string name="add_credit_card">Add Credit Card</string>
-    <string name="credit_msg">hdffffffff sdhfgfhhsx isahdggfsh sjs</string>
+    <string name="credit_msg">jdhfjgfg urhfrhfh  eihrfghf hedhf yrfhf uyhf ufhfh uss hchccccccccbc xhhxhxh</string>
     <string name="credit_number">Credit Number</string>
-    <string name="credit_name">Name in Credit</string>
     <string name="expire_date_id">Expire Date</string>
     <string name="cvv">CVV</string>
     <string name="ok">Accept</string>
-    <string name="signup_hello">Welcome in DoctorN</string>
-    <string name="choosing_day">Choosing workdays</string>
-    <string name="counseling_time">Counseling Time</string>
+    <string name="signup_hello">welcome to doctorN</string>
+    <string name="choosing_day">Choose workdays</string>
+    <string name="counseling_time">Counseling Time </string>
     <string name="counseling_price">Counseling Price</string>
     <string name="create_account">Create Account</string>
     <string name="privecy_label">Paragraph Label</string>
-    <string name="privacy_policy_subject">dsjhgdguf  jdhsgfshs  dijhdfsfdsdu   sugtsfsghs dchdffsdjiso    dkhdfdgkdkd    judfdhjdk   dihydfdfjdl     dihydfdhjkdjk    diydgjkdkd</string>
+    <string name="privacy_policy_subject">jdhfjgfg urhfrhfh  eihrfghf hedhf yrfhf uyhf ufhfh uss hchccccccccbc xhhxhxh</string>
     <string name="patient_name">Patient Name</string>
     <string name="conversation_time">3:00</string>
-    <string name="type_msg_here">Type message here</string>
-    <string name="counseling_start">Start Counseling</string>
-    <string name="counseling_end">End Counseling</string>
+    <string name="type_msg_here">Type your message here</string>
+    <string name="counseling_start">start counseling</string>
+    <string name="counseling_end">end counseling</string>
     <string name="counseling_timer">3:00</string>
-    <string name="specialist">Specializatio</string>
+    <string name="specialist">Specialist</string>
     <string name="specialist_value">value value</string>
     <string name="study">Study</string>
     <string name="job">Job</string>
-    <string name="password_empty">please enter your password!!</string>
-    <string name="email_empty">please enter your email !!!</string>
-    <string name="email_invalid">please enter valid email !!</string>
-    <string name="edit_text_empty">Field is empty</string>
+    <string name="password_empty">please enter password</string>
+    <string name="email_empty">please enter email</string>
+    <string name="email_invalid">enter avlid email</string>
+    <string name="edit_text_empty">content is empty</string>
     <string name="change_password">Change Password</string>
     <string name="old_password">Old Password</string>
-    <string name="new_password">New Password</string>
+    <string name="new_password">New password</string>
     <string name="confirm_new_password">Confirm New Password</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="change_language">Change Language</string>
+    <string name="edit_profile">Update Profile</string>
+    <string name="change_language">Change language</string>
     <string name="arabic">العربية</string>
     <string name="english">English</string>
     <string name="internet_offline">Make sure that internet is connected?!!</string>
@@ -93,5 +92,37 @@
     <string name="operation_num">operation num 1#</string>
     <string name="money_value">1200 RS</string>
     <string name="time_value">1/1/2019</string>
-    <string name="accept_it">accept it</string>
+    <string name="accept_it">Accept it</string>
+    <string name="register_as_doctor">Register as Doctor</string>
+    <string name="internal">Internal</string>
+    <string name="like_count">250</string>
+    <string name="our_page">Our Page</string>
+    <string name="account">My Account</string>
+    <string name="article_label">Article Label</string>
+    <string name="reservation">Servation</string>
+    <string name="reservate_doctor">Reservate Doctor</string>
+    <string name="rate_doctor">Rate Doctor</string>
+    <string name="avilable_days">Available Times</string>
+    <string name="doctors">Doctors</string>
+    <string name="search">Search</string>
+    <string name="credit_name">Name in Credit</string>
+    <string name="login_as_user">Login as User</string>
+    <string name="service_value">Consult remotly medicine</string>
+    <string name="service">Service</string>
+    <string name="price">Price</string>
+    <string name="discount">Discount</string>
+    <string name="total_price">0 RS</string>
+    <string name="total">Total</string>
+    <string name="add_discount_copoun">Add discount Copoun</string>
+    <string name="add">Add</string>
+    <string name="hint">Code</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="credit_balance">Credit Balance</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="payment_now">Payment Now</string>
+    <string name="payment">Payment</string>
+    <string name="doctor_detail">Doctor</string>
+    <string name="banking_exchange">Banking Trasfer</string>
+    <string name="bank_transfer">Bank Transfer</string>
+    <string name="person_name">Person Name</string>
 </resources>

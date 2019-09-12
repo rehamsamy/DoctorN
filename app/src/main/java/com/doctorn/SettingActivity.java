@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.doctorn.privacyAndPolicy.PrivacyPolicyActivity;
 import com.doctorn.utils.PreferenceHelper;
@@ -22,6 +23,7 @@ import butterknife.OnClick;
 public class SettingActivity extends AppCompatActivity {
 
 
+    private static final String TAG =SettingActivity.class.getSimpleName() ;
     private static String lang_selected="en";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,37 +54,42 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void changeLanguage() {
-        String [] lang={getString(R.string.arabic),getString(R.string.english)};
+        String [] lang={getString(R.string.english),getString(R.string.arabic)};
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle("choose language ?!!");
         dialog.setItems(lang, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case 0:
-                        lang_selected="ar";
-                        PreferenceHelper.setNewValue(getApplicationContext(),lang_selected);
-                        setConfig(lang_selected,SettingActivity.this);
-                    case 1:
-                        lang_selected="en";
-                        PreferenceHelper.setNewValue(getApplicationContext(),lang_selected);
-                        setConfig(lang_selected,SettingActivity.this);
+                if (which == 0) {
+                    // English Item is Slected
+                    lang_selected = "en";
+                    //language_val_txtV.setText(lang_selected);
+                    PreferenceHelper.setNewValue(SettingActivity.this, lang_selected);
+                    setConfig(lang_selected, SettingActivity.this);
+                    Log.v(TAG,"lang_selceted"+lang_selected);
+
+                } else if (which == 1) {
+                    // Arabic Item is Selected vvffrer
+                    lang_selected = "ar";
+                    PreferenceHelper.setNewValue(SettingActivity.this, lang_selected);
+                    setConfig(lang_selected, SettingActivity.this);
+                    Log.v(TAG,"lang_selceted"+lang_selected);
                 }
 
-                Intent intent=getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }
         });
         dialog.show();
     }
 
-    private void setConfig(String lang_selected, Context context) {
-        Locale locale=new Locale(lang_selected);
-        locale.setDefault(locale);
-        Configuration config=new Configuration();
-        config.locale=locale;
+    private void setConfig(String lang, Context context) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-    }
+           }
 
 }

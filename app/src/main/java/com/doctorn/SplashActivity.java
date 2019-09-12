@@ -8,6 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.doctorn.user.LoginActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -3,6 +3,7 @@ package com.doctorn;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,13 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.doctorn.doctorList.DoctorListActivity;
 import com.doctorn.models.UserModel;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.NetworkAvailable;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,11 +52,13 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     @BindView(R.id.user_confirm_password_input) EditText confirmPasswordInput;
     @BindView(R.id.gender_spinner_id) Spinner spinner;
     @BindView(R.id.progress_id) ProgressBar progressBar;
+    @BindView(R.id.hello_msg) TextView helloMsg;
     NetworkAvailable available;
     String [] gender={"male","female"};
     ArrayAdapter adapter;
     RetrofitInterface retrofitInterface;
     String gender_value;
+    String registerPersonType;
 
 
     @Override
@@ -75,15 +78,18 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,gender);
         //spinner.setDrop
         spinner.setAdapter(adapter);
-       // spinner.setOnItemClickListener(this);
 
-//        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                gender_value= adapter.getItem(position).toString();
-//                typeInput.setText(gender_value);
-//            }
-//        });
+
+        Intent intent=getIntent();
+        if(intent.getAction().equals("register_user")){
+            registerPersonType="user";
+            Log.v(TAG,"type"+registerPersonType);
+            helloMsg.setText(getString(R.string.login_as_user));
+        }
+        else if(intent.getAction().equals("register_doctor")){
+            registerPersonType="doctor";
+            Log.v(TAG,"type"+registerPersonType);
+        }
 
     }
 
@@ -94,6 +100,12 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         Log.v(TAG,"gender"+adapter.getItem(index));
     }
 
+
+    @OnClick(R.id.view_password_id)
+    void  viewPasswordClick(){
+        passwordInput.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+    }
 
     @OnClick(R.id.have_account_id)
     void loginClick(){
@@ -132,7 +144,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         map.put("user_age",ageInput.getText().toString());
         map.put("user_gender",typeInput.getText().toString());
         map.put("password",passwordInput.getText().toString());
-        map.put("user_type","doctor");
+        map.put("user_type",registerPersonType);
         map.put("password_confirmation",confirmPasswordInput.getText().toString());
 
         Log.v(TAG,"ggg"+typeInput.getText().toString());
@@ -143,10 +155,17 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                 if(response.body().isStatus()){
                     Toast.makeText(SignUpActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignUpActivity.this, ContinuRegisterActivity.class));
+                   if(registerPersonType.equals("user")){
+                       startActivity(new Intent(SignUpActivity.this, DoctorListActivity.class));
+
+                   }else if(registerPersonType.equals("doctor")){
+                       startActivity(new Intent(SignUpActivity.this, ContinuRegisterActivity.class));
+                   }
 
                 }
                 else {
+
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(SignUpActivity.this, response.body().getErrorModel().toString(), Toast.LENGTH_SHORT).show();
 
                     //Toast.makeText(SignUpActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
@@ -165,6 +184,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         gender_value= (String) parent.getItemAtPosition(position);
-        Log.v(TAG,"gender"+gender_value);
+        Log.v(TAG,"genderrr"+gender_value);
     }
 }

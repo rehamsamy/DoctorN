@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doctorList.DoctorListActivity">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <!--<ImageView-->
+                <!--android:id="@+id/back_ar"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="right|center_vertical"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/arrow"-->
+                <!--android:visibility="gone"/>-->
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/name"
+                android:id="@+id/account_img"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/back_eng"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_back_eng"
+                android:visibility="visible"/>
+
+
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/doctors"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="15dp">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/frame1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/search_edit_id"
+            android:background="@drawable/edit_round">
+
+            <Spinner
+                android:id="@+id/specialist_spinner_id"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+               app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/specialist"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/specialist_value_id"
+                android:textColor="@color/black"
+                tools:ignore="RtlCompat" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/search_edit_id"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:textSize="12sp"
+            android:drawablePadding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/frame1"
+            android:text="@string/doctor_name"
+            android:drawableEnd="@drawable/search"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/edit_round"
+            />
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            app:layout_constraintTop_toBottomOf="@id/search_edit_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/button_purple"
+            android:text="@string/search"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/White"
+            android:textAllCaps="false"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cn1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/doctor_recycler_id"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cn1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/empty_list"
+        android:visibility="gone"/>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cn1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/progress_id"/>
+
+
+</android.support.constraint.ConstraintLayout>

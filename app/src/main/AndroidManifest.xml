@@ -19,24 +19,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".user.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".notification.NotificationsActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".SuggestionComplaintsActivity" />
         <activity android:name=".BalanceActivity" />
-        <activity android:name=".myAccount.MyAccountActivity" />
+        <activity android:name=".userAccount.userAccount.UserAccountActivity" />
         <activity android:name=".ContinuRegisterActivity" />
         <activity android:name=".RegisterCreditCardActivity" />
         <activity android:name=".FinalStepRegisterActivity" />
         <activity android:name=".privacyAndPolicy.PrivacyPolicyActivity" />
-        <activity android:name=".conversation.ConversationActivity" />
+        <activity android:name=".conversation.DoctorConversationActivity" />
         <activity android:name=".voiceChat.VoiceChatActivity" />
         <activity android:name=".TermsAndConditionsActivity" />
         <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".LoginAsDoctorActivity" />
+        <activity android:name=".user.SpecialtiesActivity" />
+        <activity android:name=".user.OurPageActivity" />
+        <activity android:name=".userAccount.userAccount.articleFragment.ArticleDetailsActivity" />
+        <activity android:name=".doctorList.DoctorListActivity" />
+        <activity android:name=".doctorList.DoctorDetailsActivity" />
+        <activity android:name=".doctorAccount.DoctorAccountActivity" />
+        <activity android:name=".user.UserConservationActivity" />
+        <activity android:name=".conversation.UserConservationActivity" />
+        <activity android:name=".userPayment.UserPaymentActivity"></activity>
+        <activity android:name=".BankingExchangeActivity"></activity>
     </application>
 
 </manifest>

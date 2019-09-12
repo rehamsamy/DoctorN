@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userAccount.userAccount.articleFragment.ArticleDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/signUp_back_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow" />
+
+
+            <ImageView
+                android:id="@+id/share_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/share"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="8dp"
+                />
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/article_label"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cn"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:id="@+id/article_img_id"
+        android:src="@drawable/doctor"
+        android:scaleType="center"
+        />
+
+        <LinearLayout
+            android:id="@+id/linear_ar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="160dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/edit_round"
+            android:elevation="10dp"
+            android:gravity="end"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/commebt_count_id_ar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/like_count"
+                android:layout_marginStart="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/comment_img_ar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/comment"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/like_count_id_ar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/like_count"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                />
+
+
+            <ImageView
+                android:id="@+id/like_img_ar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/like_gray"/>
+
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cn2"
+        app:layout_constraintStart_toStartOf="@id/cn"
+        app:layout_constraintEnd_toEndOf="@id/cn"
+        app:layout_constraintTop_toBottomOf="@id/cn"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
+        >
+    <TextView
+        android:id="@+id/article_label_id"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/privacy_policy_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/article_subject_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/article_label_id"
+        app:layout_constraintTop_toBottomOf="@id/article_label_id"
+        android:text="@string/privacy_policy_subject"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="viewStart"
+        />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

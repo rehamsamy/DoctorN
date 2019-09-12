@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.doctorn.myAccount.MyAccountActivity;
+import com.doctorn.userAccount.userAccount.UserAccountActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +33,6 @@ public class FinalStepRegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.create_account_btn)
     void createAccountClick(){
-        startActivity(new Intent(getApplicationContext(), MyAccountActivity.class));
+        startActivity(new Intent(getApplicationContext(), UserAccountActivity.class));
     }
 }

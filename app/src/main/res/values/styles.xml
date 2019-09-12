@@ -1,11 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#8f87f3</item>
         <item name="colorPrimaryDark">@color/pupler</item>
-        <item name="colorAccent">@color/pupler</item>
+        <item name="colorAccent">#dfc337</item>
     </style>
 
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
@@ -14,7 +14,17 @@
         <item name="tabGravity">center</item>
     </style>
 
+    <style name="rate_bar">
+       <item name="android:src">@drawable/star_style</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">4</item>
+    </style>
 
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@drawable/star</item>
+        <item name="colorControlActivated">@drawable/star_solid</item>
+    </style>
 
 
 

@@ -57,7 +57,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@string/login_as_doctor"
+                    android:text="@string/register_as_doctor"
                     android:textColor="@color/pupler"
                     android:id="@+id/hello_msg"
                     android:textSize="18sp"
@@ -179,7 +179,6 @@
                     android:hint="@string/password"
                     android:drawableStart="@drawable/password"
                     android:background="@drawable/edit_round"
-                    android:drawableEnd="@drawable/view"
                     android:drawablePadding="20dp"
                     android:layout_marginTop="10dp"
                     android:inputType="textPassword"
@@ -187,6 +186,15 @@
                     android:textAlignment="viewStart"
                     android:textSize="14sp"/>
 
+                <ImageView
+                    android:id="@+id/view_password_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/user_password_input"
+                    app:layout_constraintBottom_toBottomOf="@id/user_password_input"
+                    app:layout_constraintEnd_toEndOf="@id/user_password_input"
+                    android:src="@drawable/view"
+                    android:layout_marginEnd="20dp"/>
 
                 <EditText
                     android:id="@+id/user_confirm_password_input"
@@ -211,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layoutw_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:visibility="gone"/>

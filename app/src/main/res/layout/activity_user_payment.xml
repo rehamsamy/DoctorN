@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userPayment.UserPaymentActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/back_ar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow"
+                android:visibility="gone"/>
+
+
+            <ImageView
+                android:id="@+id/back_eng"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_back_eng"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/payment"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        android:scrollbars="vertical">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/card_view">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/update_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/service_txt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/service"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/service_txt_value_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/service_txt_id"
+                        app:layout_constraintTop_toTopOf="@id/service_txt_id"
+                        android:text="@string/service_value"
+                        android:textColor="@color/pupler"
+                        android:layout_marginStart="30dp"
+                        android:textSize="16sp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/price_txt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toBottomOf="@id/service_txt_id"
+                        app:layout_constraintStart_toStartOf="@id/service_txt_id"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/price_value_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/service_txt_value_id"
+                        app:layout_constraintTop_toTopOf="@id/price_txt_id"
+                        android:text="@string/counseling_price"
+                        android:textColor="@color/pupler"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/discount_txt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/discount"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toBottomOf="@id/price_txt_id"
+                        app:layout_constraintStart_toStartOf="@id/service_txt_id"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/user_age_value_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/price_value_id"
+                        app:layout_constraintTop_toTopOf="@id/discount_txt_id"
+                        android:text="@string/age_value"
+                        android:textColor="@color/pupler"
+                        android:textSize="16sp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/total_txt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toBottomOf="@id/discount_txt_id"
+                        app:layout_constraintStart_toStartOf="@id/service_txt_id"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/user_gender_value_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/service_txt_value_id"
+                        app:layout_constraintTop_toTopOf="@id/total_txt_id"
+                        android:text="@string/total_price"
+                        android:textColor="@color/pupler"
+                        android:textSize="16sp"
+                        />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/add_discount_copoun_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/card_view"
+                app:layout_constraintTop_toBottomOf="@id/card_view"
+                android:layout_marginTop="15dp"
+                android:text="@string/add_discount_copoun"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/card_view"
+                app:layout_constraintEnd_toEndOf="@id/card_view"
+                app:layout_constraintTop_toBottomOf="@id/add_discount_copoun_id"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_round">
+
+
+                <EditText
+                    android:id="@+id/copoun_value_input"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/edit_round"
+                    android:textAlignment="viewStart"
+                    android:paddingStart="15dp"
+                    android:hint="@string/hint"
+                    />
+
+                <Button
+                    android:id="@+id/add_btn_id"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="100dp"
+                    android:textColor="@color/White"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_purple"
+                    android:text="@string/add"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="@id/card_view"
+                app:layout_constraintEnd_toEndOf="@id/card_view"
+                app:layout_constraintTop_toBottomOf="@id/cn"
+                app:cardCornerRadius="5dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/payment_method_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/payment_method"
+                        android:textColor="@color/blue"
+                        android:textSize="17sp"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/credit_balance_radio_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/payment_method_id"
+                        app:layout_constraintTop_toBottomOf="@id/payment_method_id"
+                        android:text="@string/credit_balance"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/current_balance_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/payment_method_id"
+                        app:layout_constraintTop_toBottomOf="@id/credit_balance_radio_id"
+                        android:layout_marginStart="40dp"
+                        android:text="@string/current_balance"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/current_balance_value_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/current_balance_id"
+                        app:layout_constraintTop_toBottomOf="@id/credit_balance_radio_id"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/total_price"
+                        android:textSize="10dp"/>
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"
+                        app:layout_constraintTop_toBottomOf="@id/current_balance_id"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/credit_card_radio_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/payment_method_id"
+                        app:layout_constraintTop_toBottomOf="@id/view"
+                        android:text="@string/credit_card"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"/>
+
+                    <ImageView
+                        android:id="@+id/visa_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ok"
+                        app:layout_constraintTop_toBottomOf="@id/credit_card_radio_id"
+                        app:layout_constraintStart_toStartOf="@id/current_balance_id"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="8dp"
+                        />
+
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_purple"
+                app:layout_constraintStart_toStartOf="@id/cn"
+                app:layout_constraintEnd_toEndOf="@id/card_view1"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_view1"
+                android:layout_marginBottom="10dp"
+                android:text="@string/payment_now"
+                android:textColor="@color/White"
+                android:textAllCaps="false"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

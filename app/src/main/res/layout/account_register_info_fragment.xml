@@ -119,28 +119,94 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow_ar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_left_blue"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textAlignment="viewStart"/>
+                android:textAlignment="viewStart"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/arrow_eng"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/arrow_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="viewStart"
+                android:visibility="gone"/>
         </android.support.constraint.ConstraintLayout>
 
 
     </android.support.v7.widget.CardView>
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cn1"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/card_view"
+            app:layout_constraintTop_toBottomOf="@id/card_view"
+            app:layout_constraintEnd_toEndOf="@id/card_view"
+            android:background="@drawable/button_background"
+            android:padding="10dp"
+            android:elevation="8dp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/change_password_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/change_password"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                />
+
+            <ImageView
+                android:id="@+id/arrow_ar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_left_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAlignment="viewStart"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/arrow_eng1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/arrow_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="viewStart"
+                android:visibility="gone"/>
+
+        </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/cn1"
+        android:id="@+id/cn4"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/card_view"
-        app:layout_constraintTop_toBottomOf="@id/card_view"
+        app:layout_constraintTop_toBottomOf="@id/cn3"
         app:layout_constraintEnd_toEndOf="@id/card_view"
         android:background="@drawable/button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:elevation="8dp">
 
@@ -157,7 +223,7 @@
            />
 
         <ImageView
-            android:id="@+id/arrow_img_ar"
+            android:id="@+id/arrow_ar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_left_blue"
@@ -165,7 +231,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textAlignment="viewStart"
+            android:visibility="gone"
             />
+
+        <ImageView
+            android:id="@+id/arrow_eng2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="viewStart"
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -196,7 +274,7 @@
             />
 
         <ImageView
-            android:id="@+id/arrow_img_ar2"
+            android:id="@+id/arrow_ar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_left_blue"
@@ -204,7 +282,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textAlignment="viewStart"
+            android:visibility="gone"
             />
+        <ImageView
+            android:id="@+id/arrow_eng3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="viewStart"
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -237,7 +326,7 @@
             />
 
         <ImageView
-            android:id="@+id/arrow_img_ar3"
+            android:id="@+id/arrow_ar4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_left_blue"
@@ -245,49 +334,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textAlignment="viewStart"
+            android:visibility="gone"
             />
 
+        <ImageView
+            android:id="@+id/arrow_eng4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="viewStart"
+            android:visibility="gone"/>
     </android.support.constraint.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cn4"
-            android:layout_marginTop="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/card_view"
-            app:layout_constraintTop_toBottomOf="@id/cn3"
-            app:layout_constraintEnd_toEndOf="@id/card_view"
-            android:background="@drawable/button_background"
-            android:padding="10dp"
-            android:elevation="8dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
 
-            <TextView
-                android:id="@+id/change_password_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:text="@string/change_password"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                />
-
-            <ImageView
-                android:id="@+id/arrow_img_ar3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrow_left_blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textAlignment="viewStart"
-                />
-
-        </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>
