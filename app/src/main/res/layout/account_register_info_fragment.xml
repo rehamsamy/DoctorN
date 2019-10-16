@@ -131,8 +131,8 @@
 
             <ImageView
                 android:id="@+id/arrow_eng"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/arrow_img"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +148,7 @@
             android:id="@+id/cn1"
             android:layout_marginTop="10dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             app:layout_constraintStart_toStartOf="@id/card_view"
             app:layout_constraintTop_toBottomOf="@id/card_view"
             app:layout_constraintEnd_toEndOf="@id/card_view"
@@ -185,8 +185,8 @@
 
             <ImageView
                 android:id="@+id/arrow_eng1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/arrow_img"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -200,7 +200,7 @@
         android:id="@+id/cn4"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="@id/card_view"
         app:layout_constraintTop_toBottomOf="@id/cn3"
         app:layout_constraintEnd_toEndOf="@id/card_view"
@@ -236,8 +236,8 @@
 
         <ImageView
             android:id="@+id/arrow_eng2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/arrow_img"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -253,7 +253,7 @@
         android:id="@+id/cn2"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="@id/card_view"
         app:layout_constraintTop_toBottomOf="@id/cn1"
         app:layout_constraintEnd_toEndOf="@id/card_view"
@@ -286,8 +286,8 @@
             />
         <ImageView
             android:id="@+id/arrow_eng3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/arrow_img"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -303,7 +303,7 @@
         android:id="@+id/cn3"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="@id/card_view"
         app:layout_constraintTop_toBottomOf="@id/cn2"
         app:layout_constraintEnd_toEndOf="@id/card_view"
@@ -339,8 +339,8 @@
 
         <ImageView
             android:id="@+id/arrow_eng4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/arrow_img"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

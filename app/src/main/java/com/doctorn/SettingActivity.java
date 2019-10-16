@@ -11,25 +11,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.doctorn.models.UserModel;
 import com.doctorn.privacyAndPolicy.PrivacyPolicyActivity;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.PreferenceHelper;
+import com.doctorn.utils.RetrofitClientInstance;
+import com.doctorn.utils.RetrofitInterface;
 
 import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SettingActivity extends AppCompatActivity {
 
 
     private static final String TAG =SettingActivity.class.getSimpleName() ;
     private static String lang_selected="en";
+    static RetrofitInterface retrofitInterface;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
+        intent=getIntent();
     }
 
     @OnClick(R.id.suggestions_complaints_id)
@@ -44,9 +56,25 @@ public class SettingActivity extends AppCompatActivity {
 
     @OnClick(R.id.add_balance_id)
     void addBalanceClick(){
-        startActivity(new Intent(SettingActivity.this,RegisterCreditCardActivity.class));
+        Intent intent1=new Intent(SettingActivity.this,RegisterCreditCardActivity.class);
+        if(intent.getAction().equals(EditProfileActivity.update_user)){
+            intent1.setAction(EditProfileActivity.update_user);
+            startActivity(intent1);
+
+        }else if(intent.getAction().equals(EditProfileActivity.update_doctor)){
+            intent1.setAction(EditProfileActivity.update_doctor);
+            startActivity(intent1);
+        }
 
     }
+
+
+    @OnClick(R.id.log_out_id)
+    void logoutClick(){
+        logout();
+    }
+
+
 
     @OnClick(R.id.language_id)
     void ChangeLanguageClick(){
@@ -91,5 +119,31 @@ public class SettingActivity extends AppCompatActivity {
         config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
            }
+
+
+
+    public void logout() {
+        retrofitInterface= RetrofitClientInstance.getRetrofit();
+        Call<UserModel> call=retrofitInterface.logout();
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.body().isStatus()){
+                    Toast.makeText(SettingActivity.this, response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                }else {
+                    Toast.makeText(SettingActivity.this, response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
+
+
+    }
 
 }

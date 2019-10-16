@@ -106,5 +106,24 @@
     <string name="doctors">الاطباء</string>
     <string name="search">بحث</string>
     <string name="credit_name">الاسم في البطاقة</string>
-    <string name="service_value">Consult remotly medicine</string>
+    <string name="service_value">استشارة طبيه عن بعد</string>
+
+    <string name="service">الخدمة</string>
+    <string name="price">السعر</string>
+    <string name="discount">الخصم</string>
+    <string name="total_price">0 رس</string>
+    <string name="total">المجموع الكلي </string>
+    <string name="add_discount_copoun">اضافة كود الخصم</string>
+    <string name="add">اضافة</string>
+    <string name="hint">الكود</string>
+    <string name="payment_method">طريقة الدفع</string>
+    <string name="credit_balance">رصيد البطاقة</string>
+    <string name="current_balance">الرصيد الحالي</string>
+    <string name="payment_now">ادفع الان</string>
+    <string name="payment">الدفع</string>
+    <string name="doctor_detail">الطبيب</string>
+    <string name="banking_exchange">التحويل البنكي</string>
+    <string name="bank_transfer">البنك المحول اليه</string>
+    <string name="person_name">اسم الشخص المحول</string>
+
 </resources>

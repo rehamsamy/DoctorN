@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.doctorn.BalanceActivity;
 import com.doctorn.ChangePasswordActivity;
@@ -19,25 +20,34 @@ import com.doctorn.EditProfileActivity;
 import com.doctorn.R;
 import com.doctorn.SettingActivity;
 import com.doctorn.models.User;
+import com.doctorn.models.UserModel;
+import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.PreferenceHelper;
+import com.doctorn.utils.RetrofitClientInstance;
+import com.doctorn.utils.RetrofitInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.support.constraint.Constraints.TAG;
 
 public class AccountRegisterInfoFragment extends Fragment {
 
-    ConstraintLayout balance;
+    ConstraintLayout balance,logout;
     ConstraintLayout setting;
     ConstraintLayout changePassword, updateProfile;
     TextView email, phone, age, gender;
     ImageView arrowEngImg,arrowArImg,arrowAr1,arrowAr2,arrowAr3,arrowAr4,arrowEng1,arrowEng2,arrowEng3,arrowEng4;
     User user;
-
+    RetrofitInterface retrofitInterface;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.account_register_info_fragment, container, false);
         balance = view.findViewById(R.id.cn4);
         setting = view.findViewById(R.id.cn2);
+        logout=view.findViewById(R.id.cn3);
         email = view.findViewById(R.id.user_email_value_id);
         phone = view.findViewById(R.id.user_phone_value_id);
         age = view.findViewById(R.id.user_age_value_id);
@@ -81,7 +91,7 @@ public class AccountRegisterInfoFragment extends Fragment {
         }
 
 
-        Intent intent = getActivity().getIntent();
+        final Intent intent = getActivity().getIntent();
         if (intent.hasExtra("update_data")) {
             Log.v(TAG,"ddddddddd"+intent.getParcelableExtra("update_data").toString());
             user = intent.getParcelableExtra("update_data");
@@ -120,14 +130,31 @@ public class AccountRegisterInfoFragment extends Fragment {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), SettingActivity.class));
+                Intent intent1=new Intent(getContext(), SettingActivity.class);
+                if(intent.hasExtra("user_data")){
+                    intent1.setAction(EditProfileActivity.update_user);
+                    startActivity(intent1);
+
+                }else if(intent.hasExtra("doctor_data")){
+                    intent1.setAction(EditProfileActivity.update_doctor);
+                    startActivity(intent1);
+                }
             }
         });
 
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), ChangePasswordActivity.class));
+                Intent intent1=new Intent(getContext(), ChangePasswordActivity.class);
+               if(intent.hasExtra("user_data")){
+                   intent1.setAction(EditProfileActivity.update_user);
+                   startActivity(intent1);
+
+               }else if(intent.hasExtra("doctor_data")){
+                   intent1.setAction(EditProfileActivity.update_doctor);
+                   startActivity(intent1);
+               }
+
             }
         });
 
@@ -135,13 +162,34 @@ public class AccountRegisterInfoFragment extends Fragment {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), EditProfileActivity.class));
+               if(intent.hasExtra("user_data")){
+                   Log.v(TAG,"update userrrrr");
+                   Intent intent1=new Intent(getContext(), EditProfileActivity.class);
+                   intent1.setAction(EditProfileActivity.update_user);
+                   startActivity(intent1);
+
+               }else  if(intent.hasExtra("doctor_data")){
+                   Log.v(TAG,"update doctorrrrrrr");
+                   Intent intent1=new Intent(getContext(), EditProfileActivity.class);
+                   intent1.setAction("doctor");
+                   startActivity(intent1);
+               }
+
             }
         });
+
+         logout.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 logoutCalling();
+             }
+         });
 
 
         return view;
     }
+
+
 
 //    @Override
 //    public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -156,6 +204,31 @@ public class AccountRegisterInfoFragment extends Fragment {
 //
 //        }
 //    }
+
+    private void logoutCalling() {
+
+        retrofitInterface= RetrofitClientInstance.getRetrofit();
+        Call<UserModel> call=retrofitInterface.logout();
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.body().isStatus()){
+                    Toast.makeText(getContext(), response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getContext(), LoginActivity.class));
+                }else {
+                    Toast.makeText(getContext(), response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 
     @Override
     public void onPause() {

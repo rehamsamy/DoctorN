@@ -6,14 +6,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.doctorn.R;
+import com.doctorn.models.NotificationModel;
+
+import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.Holder> {
     Context mContext;
+    List<NotificationModel> notificationModelList;
 
-    public NotificationAdapter(Context mContext) {
+    public NotificationAdapter(Context mContext,List<NotificationModel> models) {
         this.mContext = mContext;
+        this.notificationModelList=models;
     }
 
     @NonNull
@@ -25,12 +31,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int i) {
+        NotificationModel model=notificationModelList.get(i);
+        TextView notificationLabel =holder.itemView.findViewById(R.id.notification_label_id);
+        TextView notificationDescription=holder.itemView.findViewById(R.id.notification_msg_id);
+        notificationLabel.setText(model.getTitle());
+        notificationDescription.setText(model.getDescription());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return notificationModelList.size();
     }
 
     public class Holder extends RecyclerView.ViewHolder{

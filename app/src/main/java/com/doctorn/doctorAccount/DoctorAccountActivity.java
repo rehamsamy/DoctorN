@@ -47,7 +47,7 @@ public class DoctorAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_account);
         ButterKnife.bind(this);
 
-        doctorName.setText(LoginAsDoctorActivity.user.getName());
+       // doctorName.setText(LoginAsDoctorActivity.user.getName());
         Intent intent=getIntent();
 
 

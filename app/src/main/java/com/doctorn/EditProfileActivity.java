@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.doctorn.doctorAccount.DoctorAccountActivity;
 import com.doctorn.models.User;
 import com.doctorn.models.UserModel;
 import com.doctorn.userAccount.userAccount.UserAccountActivity;
@@ -35,6 +36,8 @@ public class EditProfileActivity extends AppCompatActivity {
     @BindView(R.id.user_age_input) EditText ageInput;
     @BindView(R.id.user_type_input) EditText typeInput;
     @BindView(R.id.progress_id) ProgressBar progressBar;
+    public static final String update_user="user";
+    public static final String update_doctor="doctor";
     RetrofitInterface retrofitInterface;
     User user;
     @Override
@@ -56,24 +59,41 @@ public class EditProfileActivity extends AppCompatActivity {
                 && !FUtilsValidation.isEmpty(ageInput, getString(R.string.edit_text_empty))
                 && !FUtilsValidation.isEmpty(typeInput, getString(R.string.edit_text_empty))
                 && !FUtilsValidation.isEmpty(typeInput, getString(R.string.edit_text_empty))) {
+            if(getIntent().getAction().equals(update_user)){
             editProfile();
+        }else if(getIntent().getAction().equals(update_doctor)){
+               editDoctorProfile();
+            }
+
         }
 
 
     }
+
+
     private void initilaizeView() {
-        user=LoginActivity.user;
-        nameInput.setText(user.getName());
-        phoneInput.setText(user.getUserPhone());
-        emailInput.setText(user.getEmail());
-        ageInput.setText(String.valueOf(user.getUserAge()));
-        typeInput.setText(user.getUserGender());
+        Intent intent=getIntent();
+        if(intent.getAction().equals(update_doctor)){
+            user=LoginAsDoctorActivity.user;
+            nameInput.setText(user.getName());
+            phoneInput.setText(user.getUserPhone());
+            emailInput.setText(user.getEmail());
+            ageInput.setText(String.valueOf(user.getUserAge()));
+            typeInput.setText(user.getUserGender());
+        }else if(intent.getAction().equals(update_user)) {
+            user = LoginActivity.user;
+            nameInput.setText(user.getName());
+            phoneInput.setText(user.getUserPhone());
+            emailInput.setText(user.getEmail());
+            ageInput.setText(String.valueOf(user.getUserAge()));
+            typeInput.setText(user.getUserGender());
+        }
     }
 
     private void editProfile() {
         retrofitInterface= RetrofitClientInstance.getRetrofit();
       Call<UserModel> call=retrofitInterface.updateProfile(Integer.parseInt(ageInput.getText().toString()),
-              LoginActivity.user.getUserType(),"adel@gmail.com",
+              LoginActivity.user.getUserType(),emailInput.getText().toString(),
               nameInput.getText().toString(), LoginActivity.userModel.getToken(),typeInput.getText().toString(),
               LoginActivity.user.getId(),phoneInput.getText().toString());
 
@@ -111,5 +131,50 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void editDoctorProfile() {
+        retrofitInterface= RetrofitClientInstance.getRetrofit();
+        Log.v(TAG,"email input"+emailInput.getText().toString());
+        Call<UserModel> call=retrofitInterface.updateDoctorProfile(Integer.parseInt(ageInput.getText().toString()),
+               LoginAsDoctorActivity.user.getUserType(),"ali@gmail.com",
+                nameInput.getText().toString(), LoginAsDoctorActivity.userModel.getToken(),typeInput.getText().toString(),
+                LoginAsDoctorActivity.user.getId(),phoneInput.getText().toString());
+
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(retrofit2.Call<UserModel> call, Response<UserModel> response) {
+                progressBar.setVisibility(View.VISIBLE);
+
+                if(response.body().isStatus()){
+                    progressBar.setVisibility(View.VISIBLE);
+                    Log.v(TAG,"error"+response.body().getMessage().toString());
+                    User user=response.body().getUser();
+                    Toast.makeText(EditProfileActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(EditProfileActivity.this, DoctorAccountActivity.class);
+                    intent.putExtra("update_data",user);
+                    startActivity(intent);
+                }
+                else {
+                    progressBar.setVisibility(View.VISIBLE);
+                    Log.v(TAG,"error"+response.body().getMessage().toString());
+                    Toast.makeText(EditProfileActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                progressBar.setVisibility(View.VISIBLE);
+                Log.v(TAG,"error"+t.getMessage().toString());
+                Toast.makeText(EditProfileActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+    }
+
 
 }

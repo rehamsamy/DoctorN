@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -18,10 +20,12 @@ import android.widget.TextView;
 import com.doctorn.R;
 import com.doctorn.UserRatesFragment.UserRatesAdapter;
 import com.doctorn.interfaces.OnItemClickInterface;
+import com.doctorn.models.DoctorModel;
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.ReviewsItem;
 import com.doctorn.models.SpecialtiesModel;
 import com.doctorn.models.User;
+import com.doctorn.models.UserModel;
 import com.doctorn.models.UserspecialtiesItem;
 import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.user.LoginActivity;
@@ -49,6 +53,8 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
     private static final String TAG = DoctorListActivity.class.getSimpleName();
     @BindView(R.id.doctor_recycler_id)
     RecyclerView recyclerView;
+    @BindView(R.id.search_edit_id)EditText doctorNameInput;
+    @BindView(R.id.search_button) Button searchButton;
     @BindView(R.id.specialist_spinner_id)
     Spinner spinner;
     @BindView(R.id.specialist_value_id)
@@ -63,7 +69,9 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
     RetrofitInterface retrofitInterface;
     List<String> specialtiesModelList = new ArrayList<>();
     List<ReviewsItem> reviewModels;
-    UserRatesAdapter adapter;
+    List<DoctorModel> doctorsList=new ArrayList<>();
+   DoctorListAdapter adapter;
+   UserRatesAdapter adapter1;
     ArrayAdapter<String> spinnerAdapter;
     int current_page = 1;
     String specialValue;
@@ -97,10 +105,95 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
 
         getSpecialist();
 
+        getDoctotsList();
 
-        buidReviewsRecycler();
-        getReviews(current_page);
+//        buidReviewsRecycler();
+//        getReviews(current_page);
 
+    }
+
+
+    @OnClick(R.id.search_button)
+    void setSearchButton(){
+        searchDoctorList();
+    }
+
+
+    private void searchDoctorList() {
+        retrofitInterface=RetrofitClientInstance.getRetrofit();
+        Call<UserModel> call=retrofitInterface.doctorSearch(LoginActivity.userModel.getToken(),doctorNameInput.getText().toString(),specialValue);
+    call.enqueue(new Callback<UserModel>() {
+        @Override
+        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+            if(response.body().isStatus()){
+
+                LinearLayoutManager manager = new LinearLayoutManager(DoctorListActivity.this);
+                doctorsList = response.body().getDoctorModels();
+                recyclerView.setLayoutManager(manager);
+                adapter = new DoctorListAdapter(getApplicationContext(), doctorsList);
+                //Log.v(TAG, "ssss" + this.reviewModels.size());
+                recyclerView.setHasFixedSize(true);
+                //recyclerView.setItemAnimator(new DefaultItemAnimator());
+                recyclerView.setAdapter(adapter);
+                progressDialog.setVisibility(View.INVISIBLE);
+
+                if (doctorsList.size() == 0) {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyListTxt.setVisibility(View.VISIBLE);
+                    progressDialog.setVisibility(View.GONE);
+                }
+            } else {
+                recyclerView.setVisibility(View.GONE);
+                emptyListTxt.setVisibility(View.VISIBLE);
+                progressDialog.setVisibility(View.GONE);
+
+            }
+        }
+
+        @Override
+        public void onFailure(Call<UserModel> call, Throwable t) {
+
+        }
+    });
+    }
+
+    private void getDoctotsList() {
+        retrofitInterface=RetrofitClientInstance.getRetrofit();
+        Call<UserModel> call=retrofitInterface.getDoctorsList(LoginActivity.userModel.getToken());
+        progressDialog.setVisibility(View.VISIBLE);
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if (response.body().isStatus()) {
+
+                    LinearLayoutManager manager = new LinearLayoutManager(DoctorListActivity.this);
+                    doctorsList = response.body().getDoctorModels();
+                    recyclerView.setLayoutManager(manager);
+                    adapter = new DoctorListAdapter(getApplicationContext(), doctorsList);
+                    //Log.v(TAG, "ssss" + this.reviewModels.size());
+                    recyclerView.setHasFixedSize(true);
+                    //recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    recyclerView.setAdapter(adapter);
+                    progressDialog.setVisibility(View.INVISIBLE);
+
+                    if (doctorsList.size() == 0) {
+                        recyclerView.setVisibility(View.GONE);
+                        emptyListTxt.setVisibility(View.VISIBLE);
+                        progressDialog.setVisibility(View.GONE);
+                    }
+                } else {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyListTxt.setVisibility(View.VISIBLE);
+                    progressDialog.setVisibility(View.GONE);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
     }
 
 
@@ -159,7 +252,7 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
         reviewModels = new ArrayList<>();
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        adapter = new UserRatesAdapter(getApplicationContext(), DoctorListActivity.this, reviewModels, x);
+        adapter1= new UserRatesAdapter(getApplicationContext(), DoctorListActivity.this, reviewModels, x);
         Log.v(TAG, "ssss" + this.reviewModels.size());
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

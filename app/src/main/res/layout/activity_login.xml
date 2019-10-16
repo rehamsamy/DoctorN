@@ -37,19 +37,21 @@
  <FrameLayout
      android:id="@+id/card_view"
     android:layout_width="0dp"
-    android:layout_height="300dp"
+    android:layout_height="340dp"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintTop_toBottomOf="@id/logo_img"
+     android:paddingBottom="20dp"
      android:layout_marginTop="20dp"
-     android:layout_marginBottom="15dp"
+     android:layout_marginBottom="20dp"
      >
 
      <android.support.constraint.ConstraintLayout
          android:layout_width="match_parent"
          android:layout_height="280dp"
          android:background="@drawable/edit_round"
-         android:padding="10dp">
+         android:padding="10dp"
+         android:elevation="5dp">
 
 
 
@@ -139,7 +141,7 @@
      <Button
          android:layout_width="183dp"
          android:layout_height="40dp"
-         android:background="@drawable/button_background"
+         android:background="@drawable/ripple"
          android:textColor="@color/pupler"
          android:fontFamily="sans-serif-condensed"
          android:textAlignment="center"
@@ -148,7 +150,11 @@
         android:layout_gravity="center_horizontal|bottom"
          android:id="@+id/signin_btn"
          android:textSize="18sp"
-         android:elevation="32dp"
+         android:elevation="14dp"
+         android:layout_marginBottom="20dp"
+         android:stateListAnimator="@animator/fab_anim"
+         android:outlineSpotShadowColor="@color/White"
+         android:outlineAmbientShadowColor="@color/White"
          />
 
  </FrameLayout>

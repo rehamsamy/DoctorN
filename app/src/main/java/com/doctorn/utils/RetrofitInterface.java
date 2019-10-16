@@ -2,6 +2,7 @@ package com.doctorn.utils;
 
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.SpecialtiesModel;
+import com.doctorn.models.User;
 import com.doctorn.models.UserModel;
 
 import java.util.Map;
@@ -23,13 +24,21 @@ public interface RetrofitInterface {
     @POST("api/register")
     Call<UserModel> registerUser(@QueryMap Map<String,Object> map);
 
-
-    @POST("api/changedoctorpassword")
+    @POST("/api/changepassword")
     Call<UserModel> changePassword(@Query("user_id") int id,
                                    @Query("current_password") String old,
-                                    @Query ("password")String newp,
+                                   @Query ("password")String newp,
                                    @Query("password_confirmation")String confirm,
                                    @Query("api_token")String token);
+
+
+    @POST("/api/changedoctorpassword")
+    Call<UserModel> changeDoctorPassword(@Query("user_id") int id,
+                                   @Query("current_password") String old,
+                                   @Query ("password")String newp,
+                                   @Query("password_confirmation")String confirm,
+                                   @Query("api_token")String token);
+
 
 
     @POST("/api/updateprofile")
@@ -40,7 +49,34 @@ public interface RetrofitInterface {
                                    @Query("api_token") String token,
                                    @Query("user_gender") String gender,
                                    @Query("user_id") int id,
-                                  @Query("user_phone") String phone);
+                                   @Query("user_phone") String phone);
+
+
+
+    @POST("/api/updatedoctorprofile")
+    Call<UserModel> updateDoctorProfile( @Query("user_age") int  age,
+                                   @Query("user_type") String type,
+                                   @Query("email") String email,
+                                   @Query("name") String name,
+                                   @Query("api_token") String token,
+                                   @Query("user_gender") String gender,
+                                   @Query("user_id") int id,
+                                   @Query("user_phone") String phone);
+
+
+
+    @POST("/api/logout")
+    Call<UserModel> logout();
+
+    @POST("/api/addpaymentcard")
+    Call<UserModel> addPaymentCard(@QueryMap Map<String,Object> map);
+
+    @POST("/api/adddoctorinformation")
+    Call<UserModel> addDoctorInfo(@QueryMap Map<String,Object> map);
+
+
+//    @POST("/api/forgetpassword/sendcode")
+//
 
 
     @Multipart
@@ -65,5 +101,16 @@ public interface RetrofitInterface {
     Call<ReviewModel> getReviewByDoctorId(@QueryMap Map<String,Object> map);
 
 
+    @GET("api/generalnotifications")
+    Call<UserModel> getGeneralNotification(@Query("api_token") String api_key);
+
+    @GET("api/privatenotifications")
+    Call<UserModel> getPrivateNotification(@Query("api_token") String api_key);
+
+    @GET("api/doctors")
+    Call<UserModel> getDoctorsList(@Query("api_token") String api_key);
+
+    @GET("api/d-search")
+    Call<UserModel> doctorSearch(@Query("api_token")String api_key,@Query("name")String name,@Query("specialization")String spec);
 
 }

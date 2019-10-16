@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     RetrofitInterface retrofitInterface;
     String gender_value;
     String registerPersonType;
+   public static UserModel model;
 
 
     @Override
@@ -137,7 +138,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     private void registerUser() {
         retrofitInterface= RetrofitClientInstance.getRetrofit();
-        Map<String,Object> map=new HashMap<>();
+        final Map<String,Object> map=new HashMap<>();
         map.put("name",nameInput.getText().toString());
         map.put("user_phone",phoneInput.getText().toString());
         map.put("email",emailInput.getText().toString());
@@ -156,9 +157,12 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 if(response.body().isStatus()){
                     Toast.makeText(SignUpActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
                    if(registerPersonType.equals("user")){
-                       startActivity(new Intent(SignUpActivity.this, DoctorListActivity.class));
+                       model=response.body();
+                       Intent intent=new Intent(SignUpActivity.this, DoctorListActivity.class);
+                       startActivity(intent);
 
                    }else if(registerPersonType.equals("doctor")){
+                       model=response.body();
                        startActivity(new Intent(SignUpActivity.this, ContinuRegisterActivity.class));
                    }
 

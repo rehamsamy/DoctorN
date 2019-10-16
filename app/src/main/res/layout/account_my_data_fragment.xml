@@ -59,6 +59,18 @@
             android:textSize="12sp"/>
 
 
+        <ImageView
+            android:id="@+id/edit_data_arrow_id"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@id/specialist_value_id"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/arrow_img"/>
+
+
         <TextView
             android:id="@+id/specialist_subject_id"
             android:layout_width="wrap_content"

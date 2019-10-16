@@ -40,6 +40,7 @@ public class LoginAsDoctorActivity extends AppCompatActivity {
     @BindView(R.id.user_email_input) EditText emailInput;
     @BindView(R.id.user_password_input) EditText passwordInput;
     @BindView(R.id.progress_id) ProgressBar progressBar;
+    @BindView(R.id.view_password_id) ImageView viewPasswordImg;
     public  static   User user;
     public static  UserModel userModel;
     NetworkAvailable available;
@@ -80,6 +81,8 @@ public class LoginAsDoctorActivity extends AppCompatActivity {
     @OnClick(R.id.view_password_id)
     void showPassword() {
         passwordInput.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        viewPasswordImg.setImageResource(R.drawable.off);
+
     }
 
 

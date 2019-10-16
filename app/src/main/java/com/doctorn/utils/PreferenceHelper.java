@@ -21,7 +21,7 @@ public class PreferenceHelper {
     }
 
     public static String getValue(Context context) {
-        return getSharedPreferences(context).getString(select_lang, "en");
+        return getSharedPreferences(context).getString(select_lang, "ar");
     }
 
     public static void setNewValue(Context context, String newValue) {

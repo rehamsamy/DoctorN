@@ -2,19 +2,82 @@ package com.doctorn.models;
 
 
 import android.icu.text.IDNA;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserModel{
+import java.util.List;
+
+public class UserModel implements Parcelable{
 
 	@SerializedName("message")
 	private String message;
 
+	@SerializedName("messages")
+	private  String messages;
+
 	@SerializedName("user")
 	private User user;
 
+	@SerializedName("card info")
+    CardInfoModel cardInfoModel;
+
 	@SerializedName("status")
 	private boolean status;
+
+	@SerializedName("doctors")
+    private  List<DoctorModel> doctorModels;
+
+    public List<DoctorModel> getDoctorModels() {
+        return doctorModels;
+    }
+
+    public void setDoctorModels(List<DoctorModel> doctorModels) {
+        this.doctorModels = doctorModels;
+    }
+
+    @SerializedName("notifications")
+	private List<NotificationModel> notificationModel;
+
+	public List<NotificationModel> getNotificationModel() {
+		return notificationModel;
+	}
+
+	public void setNotificationModel(List<NotificationModel> notificationModel) {
+		this.notificationModel = notificationModel;
+	}
+
+	@SerializedName("doctorinformation")
+	private DoctorInfoModel doctorInfo;
+
+	protected UserModel(Parcel in) {
+		message = in.readString();
+		messages = in.readString();
+		user = in.readParcelable(User.class.getClassLoader());
+		status = in.readByte() != 0;
+		token = in.readString();
+	}
+
+	public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
+		@Override
+		public UserModel createFromParcel(Parcel in) {
+			return new UserModel(in);
+		}
+
+		@Override
+		public UserModel[] newArray(int size) {
+			return new UserModel[size];
+		}
+	};
+
+	public DoctorInfoModel getDoctorInfo() {
+		return doctorInfo;
+	}
+
+	public void setDoctorInfo(DoctorInfoModel doctorInfo) {
+		this.doctorInfo = doctorInfo;
+	}
 
 	@SerializedName("token")
 	private String token;
@@ -28,7 +91,15 @@ public class UserModel{
 	@SerializedName("errors")
 	private ErrorModel errorModel;
 
-	public ErrorModel getErrorModel() {
+    public CardInfoModel getCardInfoModel() {
+        return cardInfoModel;
+    }
+
+    public void setCardInfoModel(CardInfoModel cardInfoModel) {
+        this.cardInfoModel = cardInfoModel;
+    }
+
+    public ErrorModel getErrorModel() {
 		return errorModel;
 	}
 
@@ -68,6 +139,14 @@ public class UserModel{
 		this.conditionsModel = conditionsModel;
 	}
 
+	public String getMessages() {
+		return messages;
+	}
+
+	public void setMessages(String messages) {
+		this.messages = messages;
+	}
+
 	public void setStatus(boolean status){
 		this.status = status;
 	}
@@ -94,4 +173,18 @@ public class UserModel{
 			",token = '" + token + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(message);
+		dest.writeString(messages);
+		dest.writeParcelable(user, flags);
+		dest.writeByte((byte) (status ? 1 : 0));
+		dest.writeString(token);
+	}
 }

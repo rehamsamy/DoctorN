@@ -139,6 +139,7 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/White"
             android:textAllCaps="false"
+            android:id="@+id/search_button"
             />
 
     </android.support.constraint.ConstraintLayout>
