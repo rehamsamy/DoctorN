@@ -5,13 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserspecialtiesItem{
 
-	@SerializedName("specialties_name_en")
+	@SerializedName("specialization_en_name")
 	private String specialtiesNameEn;
+
+
 
 	@SerializedName("id")
 	private int id;
 
-	@SerializedName("specialties_name_ar")
+	@SerializedName("specialization_ar_name")
 	private String specialtiesNameAr;
 
 	public void setSpecialtiesNameEn(String specialtiesNameEn){

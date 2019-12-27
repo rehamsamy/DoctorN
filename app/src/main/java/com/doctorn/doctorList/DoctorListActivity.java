@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.doctorn.R;
 import com.doctorn.UserRatesFragment.UserRatesAdapter;
 import com.doctorn.interfaces.OnItemClickInterface;
+import com.doctorn.models.AllDoctorsModel;
+import com.doctorn.models.DoctorItemModel;
 import com.doctorn.models.DoctorModel;
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.ReviewsItem;
@@ -30,6 +32,7 @@ import com.doctorn.models.UserspecialtiesItem;
 import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.EndlessRecyclerViewScrollListener;
+import com.doctorn.utils.OnRecyclerInterface;
 import com.doctorn.utils.PreferenceHelper;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
@@ -69,7 +72,7 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
     RetrofitInterface retrofitInterface;
     List<String> specialtiesModelList = new ArrayList<>();
     List<ReviewsItem> reviewModels;
-    List<DoctorModel> doctorsList=new ArrayList<>();
+    List<DoctorItemModel> doctorsList=new ArrayList<>();
    DoctorListAdapter adapter;
    UserRatesAdapter adapter1;
     ArrayAdapter<String> spinnerAdapter;
@@ -121,14 +124,15 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
 
     private void searchDoctorList() {
         retrofitInterface=RetrofitClientInstance.getRetrofit();
-        Call<UserModel> call=retrofitInterface.doctorSearch(LoginActivity.userModel.getToken(),doctorNameInput.getText().toString(),specialValue);
-    call.enqueue(new Callback<UserModel>() {
+        Call<AllDoctorsModel> call=retrofitInterface.doctorSearch("application/json",
+                LoginActivity.userModel.getToken(),doctorNameInput.getText().toString(),1,1,10);
+    call.enqueue(new Callback<AllDoctorsModel>() {
         @Override
-        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+        public void onResponse(Call<AllDoctorsModel> call, Response<AllDoctorsModel> response) {
             if(response.body().isStatus()){
 
                 LinearLayoutManager manager = new LinearLayoutManager(DoctorListActivity.this);
-                doctorsList = response.body().getDoctorModels();
+                doctorsList = response.body().getDoctorObjectModel().getDoctorItemModelList();
                 recyclerView.setLayoutManager(manager);
                 adapter = new DoctorListAdapter(getApplicationContext(), doctorsList);
                 //Log.v(TAG, "ssss" + this.reviewModels.size());
@@ -151,7 +155,7 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
         }
 
         @Override
-        public void onFailure(Call<UserModel> call, Throwable t) {
+        public void onFailure(Call<AllDoctorsModel> call, Throwable t) {
 
         }
     });
@@ -159,15 +163,16 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
 
     private void getDoctotsList() {
         retrofitInterface=RetrofitClientInstance.getRetrofit();
-        Call<UserModel> call=retrofitInterface.getDoctorsList(LoginActivity.userModel.getToken());
+        Call<AllDoctorsModel> call=retrofitInterface.getDoctorsList("application/json"
+                ,LoginActivity.userModel.getToken(), 1,10);
         progressDialog.setVisibility(View.VISIBLE);
-        call.enqueue(new Callback<UserModel>() {
+        call.enqueue(new Callback<AllDoctorsModel>() {
             @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+            public void onResponse(Call<AllDoctorsModel> call, Response<AllDoctorsModel> response) {
                 if (response.body().isStatus()) {
 
                     LinearLayoutManager manager = new LinearLayoutManager(DoctorListActivity.this);
-                    doctorsList = response.body().getDoctorModels();
+                    doctorsList =response.body().getDoctorObjectModel().getDoctorItemModelList();
                     recyclerView.setLayoutManager(manager);
                     adapter = new DoctorListAdapter(getApplicationContext(), doctorsList);
                     //Log.v(TAG, "ssss" + this.reviewModels.size());
@@ -175,6 +180,8 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
                     //recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
                     progressDialog.setVisibility(View.INVISIBLE);
+
+                    buildOnClickListener();
 
                     if (doctorsList.size() == 0) {
                         recyclerView.setVisibility(View.GONE);
@@ -190,8 +197,21 @@ public class DoctorListActivity extends AppCompatActivity implements OnItemClick
             }
 
             @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
+            public void onFailure(Call<AllDoctorsModel> call, Throwable t) {
 
+            }
+        });
+    }
+
+    private void buildOnClickListener() {
+        adapter.setRecyclerInterface(new OnRecyclerInterface() {
+            @Override
+            public void onClick(int position) {
+                Intent intent=new Intent(getApplicationContext(),DoctorDetailsActivity.class);
+                DoctorItemModel model=doctorsList.get(position);
+                intent.putExtra(DoctorDetailsActivity.DOCTOR_MODEl,model);
+                intent.putExtra(DoctorDetailsActivity.DOCTOR_ID,model.getId());
+                startActivity(intent);
             }
         });
     }

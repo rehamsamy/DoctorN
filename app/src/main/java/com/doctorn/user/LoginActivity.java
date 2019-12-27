@@ -104,7 +104,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.signin_btn)
     void loginClick(){
-
         if(!FUtilsValidation.isEmpty(passwordInput,getResources().getString(R.string.password_empty))&&
                 !FUtilsValidation.isEmpty(emailInput,getResources().getString(R.string.email_empty))){
 
@@ -116,12 +115,9 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
-
-
     }
 
     private void loginUser() {
-
         Map<String,Object> map= new HashMap<>();
         map.put("email",emailInput.getText().toString());
         map.put("password",passwordInput.getText().toString());

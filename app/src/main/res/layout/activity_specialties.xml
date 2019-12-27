@@ -22,7 +22,7 @@
             android:background="@android:color/transparent">
 
             <ImageView
-                android:id="@+id/signUp_back_img"
+                android:id="@+id/notificaion_img"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="start|center_vertical"

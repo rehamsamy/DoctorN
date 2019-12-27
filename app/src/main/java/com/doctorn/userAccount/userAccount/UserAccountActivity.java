@@ -44,8 +44,8 @@ public class UserAccountActivity extends AppCompatActivity {
     private static int PC_Picker=1;
 
    UserPagerAdapter adaper;
-  public static  int flag;
- public static String x;
+   public static  int flag;
+   public static String x;
     User user;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

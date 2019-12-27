@@ -2,49 +2,48 @@ package com.doctorn.models;
 
 import com.google.gson.annotations.SerializedName;
 
-
 public class NotificationModel{
 
-	@SerializedName("description")
-	private String description;
+	@SerializedName("message")
+	private String message;
 
-	@SerializedName("id")
-	private int id;
+	@SerializedName("notifications")
+	private Notifications notifications;
 
-	@SerializedName("title")
-	private String title;
+	@SerializedName("status")
+	private boolean status;
 
-	public void setDescription(String description){
-		this.description = description;
+	public void setMessage(String message){
+		this.message = message;
 	}
 
-	public String getDescription(){
-		return description;
+	public String getMessage(){
+		return message;
 	}
 
-	public void setId(int id){
-		this.id = id;
+	public void setNotifications(Notifications notifications){
+		this.notifications = notifications;
 	}
 
-	public int getId(){
-		return id;
+	public Notifications getNotifications(){
+		return notifications;
 	}
 
-	public void setTitle(String title){
-		this.title = title;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public String getTitle(){
-		return title;
+	public boolean isStatus(){
+		return status;
 	}
 
 	@Override
  	public String toString(){
 		return 
 			"NotificationModel{" + 
-			"description = '" + description + '\'' + 
-			",id = '" + id + '\'' + 
-			",title = '" + title + '\'' + 
+			"message = '" + message + '\'' + 
+			",notifications = '" + notifications + '\'' + 
+			",status = '" + status + '\'' + 
 			"}";
 		}
 }

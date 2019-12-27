@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.doctorn.LoginAsDoctorActivity;
 import com.doctorn.R;
 import com.doctorn.interfaces.OnItemClickInterface;
+import com.doctorn.models.FavoriteDataArrayModel;
+import com.doctorn.models.FavoriteDoctorsModel;
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.ReviewsItem;
 import com.doctorn.models.User;
@@ -38,12 +40,12 @@ import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
 public class UserRatesFragment extends Fragment implements OnItemClickInterface{
-    UserRatesAdapter adapter;
+    FavoriteDoctorsAdapter adapter;
     RecyclerView recyclerView;
     int current_page=1;
     RetrofitInterface retrofitInterface;
     TextView emptyListTxt;
-    List<ReviewsItem> modelList;
+    List<FavoriteDataArrayModel> modelList;
     ProgressBar progressBar;
     int flag;
     User user;
@@ -60,7 +62,8 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
         emptyListTxt=view.findViewById(R.id.empty_list);
         // recyclerView.setAdapter(adapter);
        x="fragment";
-            buildRecyclerReview();
+       modelList=new ArrayList<>();
+           buildRecyclerReview();
             getReviews(current_page);
 
         return view;
@@ -71,41 +74,40 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
         super.onActivityCreated(savedInstanceState);
         x="fragment";
 //            buildRecyclerReview();
-//            getReviews(current_page);
+//           getReviews(current_page);
 
     }
 
-    private void getReviews(int current_page) {
+    private void getReviews(final int current_page) {
         retrofitInterface=RetrofitClientInstance.getRetrofit();
         Map<String,Object> map=new HashMap<>();
         map.put("page",current_page);
         map.put("limit",10);
         map.put("api_token",LoginActivity.userModel.getToken());
         map.put("user_id",LoginActivity.user.getId());
-        Call<ReviewModel> call=retrofitInterface.getReviewByUserId(map);
+        Call<FavoriteDoctorsModel> call=retrofitInterface.getMyFavoriteDoctors(LoginActivity.userModel.getToken(),current_page,
+                10);
             progressBar.setVisibility(View.VISIBLE);
-        call.enqueue(new Callback<ReviewModel>() {
+        call.enqueue(new Callback<FavoriteDoctorsModel>() {
             @Override
-            public void onResponse(Call<ReviewModel> call, Response<ReviewModel> response) {
+            public void onResponse(Call<FavoriteDoctorsModel> call, Response<FavoriteDoctorsModel> response) {
                 if (response.body().isStatus()) {
-                    progressBar.setVisibility(View.GONE);
-                    modelList.addAll(response.body().getReviews());
-                    Log.v(TAG,"responce"+response.body().getReviews());
-                    adapter.notifyItemRangeInserted(adapter.getItemCount(), modelList.size());
-
-                    if(response.body().getReviews().size()==0){
-                        recyclerView.setVisibility(View.GONE);
-                        emptyListTxt.setVisibility(View.VISIBLE);
+                    modelList.addAll(response.body().getFavorites().getFavoriteDataArrayModelList());
+                    Log.v(TAG,"responce"+response.body().getFavorites().getFavoriteDataArrayModelList());
+                    if(response.body().getFavorites().getFavoriteDataArrayModelList().size()>0){
+                        Log.v("TAG","become 0");
+                        recyclerView.setVisibility(View.VISIBLE);
+                        adapter.notifyItemRangeInserted(adapter.getItemCount(), modelList.size());
                         progressBar.setVisibility(View.GONE);
                     }
-                }else {
-                    recyclerView.setVisibility(View.GONE);
+                }else if(modelList.size()==0&&current_page==1){
+                    Log.v("TAG","become 1");
                     emptyListTxt.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             }
             @Override
-            public void onFailure(Call<ReviewModel> call, Throwable t) {
+            public void onFailure(Call<FavoriteDoctorsModel> call, Throwable t) {
                 recyclerView.setVisibility(View.GONE);
                 emptyListTxt.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
@@ -118,7 +120,7 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
         modelList=new ArrayList<>();
         final LinearLayoutManager manager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(manager);
-        adapter=new UserRatesAdapter(getContext(),UserRatesFragment.this, modelList,x);
+        adapter=new FavoriteDoctorsAdapter(getContext(),UserRatesFragment.this, modelList,x);
         Log.v(TAG,"ssss"+ this.modelList.size());
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -127,14 +129,8 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         current_page++;
-                        if(modelList.size()==0){
-                            current_page=1;
-                            Log.v(TAG, "model size" + modelList.size());
-                        }
                         Log.v(TAG, "model size" + modelList.size());
                         getReviews(current_page);
-
-
 
             }
 

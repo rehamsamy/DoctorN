@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/edit_round"
-    app:cardCornerRadius="5dp"
-    android:layout_margin="10dp">
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    android:background="@drawable/constraint_background">
 
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="10dp"
        >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -19,8 +21,8 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/patient_name_id"
-        app:layout_constraintBottom_toBottomOf="@id/conversation_subject_id"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/doc"
         android:layout_marginStart="8dp"
         android:scaleType="centerCrop"
@@ -32,7 +34,7 @@
             android:id="@+id/patient_name_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/patient_img_id"
             app:layout_constraintStart_toEndOf="@id/patient_img_id"
             app:layout_constraintBottom_toTopOf="@id/conversation_subject_id"
             android:text="@string/patient_name"
@@ -80,4 +82,4 @@
     </android.support.constraint.ConstraintLayout>
 
 
-</android.support.v7.widget.CardView>
+</FrameLayout>

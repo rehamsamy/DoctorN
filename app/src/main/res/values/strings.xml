@@ -125,4 +125,6 @@
     <string name="banking_exchange">Banking Trasfer</string>
     <string name="bank_transfer">Bank Transfer</string>
     <string name="person_name">Person Name</string>
+    <string name="saturday">Saturday</string>
+    <string name="avilable_time">Available Times:</string>
 </resources>

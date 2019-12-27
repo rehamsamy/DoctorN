@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.doctorn.R;
 import com.doctorn.doctorAccount.DoctorAccountActivity;
+import com.doctorn.notification.NotificationsActivity;
 import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.user.OurPageActivity;
 import com.doctorn.user.SpecialtiesActivity;
@@ -31,8 +32,8 @@ public class DoctorConversationActivity extends AppCompatActivity {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter=new ConversationAdapter(this);
-            recyclerView.setAdapter(adapter);
+           // adapter=new ConversationAdapter(this);
+            //recyclerView.setAdapter(adapter);
 
     }
 
@@ -40,6 +41,11 @@ public class DoctorConversationActivity extends AppCompatActivity {
     void myAccountClick(){
             Intent intent=new Intent(DoctorConversationActivity.this, DoctorAccountActivity.class);
             startActivity(intent);
+    }
+
+    @OnClick(R.id.notificaion_img)
+    void setNotificationImg(){
+        startActivity(new Intent(getApplicationContext(), NotificationsActivity.class));
 
     }
 }

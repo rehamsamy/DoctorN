@@ -1,5 +1,11 @@
 package com.doctorn.utils;
 
+import com.doctorn.models.AllArticleModel;
+import com.doctorn.models.AllDoctorsModel;
+import com.doctorn.models.ArticleDataArrayModel;
+import com.doctorn.models.Articles;
+import com.doctorn.models.FavoriteDoctorsModel;
+import com.doctorn.models.NotificationModel;
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.SpecialtiesModel;
 import com.doctorn.models.User;
@@ -10,6 +16,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -91,7 +98,7 @@ public interface RetrofitInterface {
     Call<UserModel> getPrivacyAndPolicy();
 
 
-    @GET("api/getdoctorspecialties")
+    @GET("api/specializations")
     Call<SpecialtiesModel> getSpecialities(@QueryMap Map<String,Object> map);
 
     @GET("api/getreviewbyuserid")
@@ -101,16 +108,80 @@ public interface RetrofitInterface {
     Call<ReviewModel> getReviewByDoctorId(@QueryMap Map<String,Object> map);
 
 
-    @GET("api/generalnotifications")
-    Call<UserModel> getGeneralNotification(@Query("api_token") String api_key);
+    @GET("api/notifications")
+    Call<NotificationModel> getNotifications(@Query("api_token") String api_key,
+                                             @Query("get_unreaded_only") String readed_state,
+                                             @Query("page") int page,
+                                             @Query("limit") int limit);
 
-    @GET("api/privatenotifications")
-    Call<UserModel> getPrivateNotification(@Query("api_token") String api_key);
+
 
     @GET("api/doctors")
-    Call<UserModel> getDoctorsList(@Query("api_token") String api_key);
+    Call<AllDoctorsModel> getDoctorsList(@Header("Accept") String accept,
+                                         @Query("api_token") String api_key,
+                                         @Query("page") int page,
+                                         @Query("limit") int limit);
 
     @GET("api/d-search")
-    Call<UserModel> doctorSearch(@Query("api_token")String api_key,@Query("name")String name,@Query("specialization")String spec);
+    Call<AllDoctorsModel> doctorSearch(@Header("Accept") String accept,
+                                       @Query("api_token")String api_key,
+                                       @Query("name")String name,
+                                       @Query("specialization_id") int spec,
+                                       @Query("page")int page,
+                                       @Query("limit")int limit);
+
+
+
+
+    @GET("api/getanyDoctorInfo")
+    Call<AllDoctorsModel> getDoctorInfoDetails(@Query("api_token")String api_key,
+                                               @Query("doctor_id")int doctor_id);
+
+
+
+    ////////   get fvorite doctors in user fragment //////////////
+
+    @GET("api/getMyFavoriteDoctors")
+  Call<FavoriteDoctorsModel> getMyFavoriteDoctors(@Query("api_token") String api_key,
+                                                  @Query("page") int page,
+                                                  @Query("limit") int limit);
+
+///-------------  get favorite article in user fragment-----------------------
+@GET("api/getMyFavoriteArticles")
+Call<FavoriteDoctorsModel> getMyFavoriteArticle(@Query("api_token") String api_key,
+                                                @Query("page") int page,
+                                                @Query("limit") int limit);
+
+
+//------------------- get all articles in page activity--------------------
+@GET("api/articles/get-all")
+Call<AllArticleModel> getAllArticle(@Query("api_token") String api_key,
+                                           @Query("page") int page,
+                                           @Query("limit") int limit);
+
+//---------------------- get Article details by id --------------------------
+
+    @GET("api/articles/get-one")
+    Call<Articles> getArticleDetails(@Query("api_token") String api_key,
+                                     @Query("article_id") int id);
+
+
+    @GET("api/getdoctorinfo")
+    Call<AllDoctorsModel> getDoctorInfoDetailsInDoctors(@Query("api_token") String token);
+
+
+
+   // ----------------- add doctor to favorite list-----------------------------
+    @POST("api/favorites")
+    Call<FavoriteDoctorsModel> addDoctorToFavorite(@QueryMap Map<String,Object> map);
+
+
+    //----------------   add review for doctor ------------------------------------
+    @POST("api/addreview")
+    Call<ReviewModel> addReviewForDoctor(@Query("api_token") String api_key,
+                                         @Query("reservation_id") int reservation_id,
+                                         @Query("user_review") String review,
+                                         @Query("user_rate") int rate);
+
 
 }

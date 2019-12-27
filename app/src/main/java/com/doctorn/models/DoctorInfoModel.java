@@ -6,8 +6,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class DoctorInfoModel{
 
-	@SerializedName("doctor_id")
-	private String doctorId;
+	@SerializedName("Account_Activation")
+	private String accountActivation;
+
+	@SerializedName("work_start_time")
+	private String workStartTime;
 
 	@SerializedName("profession_license")
 	private String professionLicense;
@@ -15,33 +18,65 @@ public class DoctorInfoModel{
 	@SerializedName("languages")
 	private String languages;
 
-	@SerializedName("updated_at")
-	private String updatedAt;
-
 	@SerializedName("graduation_year")
 	private String graduationYear;
-
-	@SerializedName("graduation_universty")
-	private String graduationUniversty;
 
 	@SerializedName("degree")
 	private String degree;
 
-	@SerializedName("specialization")
-	private String specialization;
+	@SerializedName("show")
+	private int show;
+
+	@SerializedName("work_end_time")
+	private String workEndTime;
 
 	@SerializedName("created_at")
 	private String createdAt;
 
+	@SerializedName("consultation_price")
+	private int consultationPrice;
+
+	@SerializedName("doctor_id")
+	private int doctorId;
+
+	@SerializedName("specialization_id")
+	private int specializationId;
+
+	@SerializedName("updated_at")
+	private String updatedAt;
+
+	@SerializedName("name")
+	private String name;
+
+	@SerializedName("graduation_universty")
+	private String graduationUniversty;
+
+	@SerializedName("consultation_duration")
+	private int consultationDuration;
+
 	@SerializedName("id")
 	private int id;
 
-	public void setDoctorId(String doctorId){
-		this.doctorId = doctorId;
+	@SerializedName("work_days")
+	private String workDays;
+
+	@SerializedName("email")
+	private String email;
+
+	public void setAccountActivation(String accountActivation){
+		this.accountActivation = accountActivation;
 	}
 
-	public String getDoctorId(){
-		return doctorId;
+	public String getAccountActivation(){
+		return accountActivation;
+	}
+
+	public void setWorkStartTime(String workStartTime){
+		this.workStartTime = workStartTime;
+	}
+
+	public String getWorkStartTime(){
+		return workStartTime;
 	}
 
 	public void setProfessionLicense(String professionLicense){
@@ -60,28 +95,12 @@ public class DoctorInfoModel{
 		return languages;
 	}
 
-	public void setUpdatedAt(String updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public String getUpdatedAt(){
-		return updatedAt;
-	}
-
 	public void setGraduationYear(String graduationYear){
 		this.graduationYear = graduationYear;
 	}
 
 	public String getGraduationYear(){
 		return graduationYear;
-	}
-
-	public void setGraduationUniversty(String graduationUniversty){
-		this.graduationUniversty = graduationUniversty;
-	}
-
-	public String getGraduationUniversty(){
-		return graduationUniversty;
 	}
 
 	public void setDegree(String degree){
@@ -92,12 +111,20 @@ public class DoctorInfoModel{
 		return degree;
 	}
 
-	public void setSpecialization(String specialization){
-		this.specialization = specialization;
+	public void setShow(int show){
+		this.show = show;
 	}
 
-	public String getSpecialization(){
-		return specialization;
+	public int getShow(){
+		return show;
+	}
+
+	public void setWorkEndTime(String workEndTime){
+		this.workEndTime = workEndTime;
+	}
+
+	public String getWorkEndTime(){
+		return workEndTime;
 	}
 
 	public void setCreatedAt(String createdAt){
@@ -108,6 +135,62 @@ public class DoctorInfoModel{
 		return createdAt;
 	}
 
+	public void setConsultationPrice(int consultationPrice){
+		this.consultationPrice = consultationPrice;
+	}
+
+	public int getConsultationPrice(){
+		return consultationPrice;
+	}
+
+	public void setDoctorId(int doctorId){
+		this.doctorId = doctorId;
+	}
+
+	public int getDoctorId(){
+		return doctorId;
+	}
+
+	public void setSpecializationId(int specializationId){
+		this.specializationId = specializationId;
+	}
+
+	public int getSpecializationId(){
+		return specializationId;
+	}
+
+	public void setUpdatedAt(String updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public String getUpdatedAt(){
+		return updatedAt;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setGraduationUniversty(String graduationUniversty){
+		this.graduationUniversty = graduationUniversty;
+	}
+
+	public String getGraduationUniversty(){
+		return graduationUniversty;
+	}
+
+	public void setConsultationDuration(int consultationDuration){
+		this.consultationDuration = consultationDuration;
+	}
+
+	public int getConsultationDuration(){
+		return consultationDuration;
+	}
+
 	public void setId(int id){
 		this.id = id;
 	}
@@ -116,20 +199,45 @@ public class DoctorInfoModel{
 		return id;
 	}
 
+	public void setWorkDays(String workDays){
+		this.workDays = workDays;
+	}
+
+	public String getWorkDays(){
+		return workDays;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+	public String getEmail(){
+		return email;
+	}
+
 	@Override
  	public String toString(){
 		return 
 			"DoctorInfoModel{" + 
-			"doctor_id = '" + doctorId + '\'' + 
+			"account_Activation = '" + accountActivation + '\'' + 
+			",work_start_time = '" + workStartTime + '\'' + 
 			",profession_license = '" + professionLicense + '\'' + 
 			",languages = '" + languages + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
 			",graduation_year = '" + graduationYear + '\'' + 
-			",graduation_universty = '" + graduationUniversty + '\'' + 
 			",degree = '" + degree + '\'' + 
-			",specialization = '" + specialization + '\'' + 
+			",show = '" + show + '\'' + 
+			",work_end_time = '" + workEndTime + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
+			",consultation_price = '" + consultationPrice + '\'' + 
+			",doctor_id = '" + doctorId + '\'' + 
+			",specialization_id = '" + specializationId + '\'' + 
+			",updated_at = '" + updatedAt + '\'' + 
+			",name = '" + name + '\'' + 
+			",graduation_universty = '" + graduationUniversty + '\'' + 
+			",consultation_duration = '" + consultationDuration + '\'' + 
 			",id = '" + id + '\'' + 
+			",work_days = '" + workDays + '\'' + 
+			",email = '" + email + '\'' + 
 			"}";
 		}
 }

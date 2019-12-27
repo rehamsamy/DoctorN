@@ -64,8 +64,11 @@
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:id="@+id/article_img_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/doctor"
         android:scaleType="center"
         />
@@ -73,10 +76,10 @@
         <LinearLayout
             android:id="@+id/linear_ar"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="170dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +91,7 @@
             >
 
             <TextView
-                android:id="@+id/commebt_count_id_ar"
+                android:id="@+id/comment_count_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/like_count"
@@ -96,14 +99,14 @@
                 />
 
             <ImageView
-                android:id="@+id/comment_img_ar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:id="@+id/comment_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/comment"
                 android:layout_marginStart="8dp"/>
 
             <TextView
-                android:id="@+id/like_count_id_ar"
+                android:id="@+id/like_count_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/like_count"
@@ -113,9 +116,9 @@
 
 
             <ImageView
-                android:id="@+id/like_img_ar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:id="@+id/like_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/like_gray"/>
 
 
@@ -124,26 +127,23 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cn2"
-        app:layout_constraintStart_toStartOf="@id/cn"
-        app:layout_constraintEnd_toEndOf="@id/cn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cn"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:padding="10dp">
 
-        >
+
+
     <TextView
         android:id="@+id/article_label_id"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="viewStart"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/privacy_policy_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -159,6 +159,7 @@
         android:layout_marginEnd="20dp"
         android:textAlignment="viewStart"
         />
+    </ScrollView>
 
-    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

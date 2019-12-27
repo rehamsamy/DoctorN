@@ -40,7 +40,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:id="@+id/notification_img_id"
+                android:id="@+id/notificaion_img"
                 />
 
 

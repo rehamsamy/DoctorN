@@ -29,7 +29,27 @@ public class UserModel implements Parcelable{
 	@SerializedName("doctors")
     private  List<DoctorModel> doctorModels;
 
-    public List<DoctorModel> getDoctorModels() {
+
+	@SerializedName("token")
+	private String token;
+
+	@SerializedName("Termsandconditions")
+	private  ConditionsModel conditionsModel;
+
+	@SerializedName("privacy")
+	private  PrivacyModel privacyModel;
+
+	@SerializedName("errors")
+	private ErrorModel errorModel;
+
+	@SerializedName("notifications")
+	private List<NotificationModel> notificationModel;
+
+	@SerializedName("doctorinformation")
+	private DoctorInfoModel doctorInfo;
+
+
+	public List<DoctorModel> getDoctorModels() {
         return doctorModels;
     }
 
@@ -37,8 +57,7 @@ public class UserModel implements Parcelable{
         this.doctorModels = doctorModels;
     }
 
-    @SerializedName("notifications")
-	private List<NotificationModel> notificationModel;
+
 
 	public List<NotificationModel> getNotificationModel() {
 		return notificationModel;
@@ -48,8 +67,7 @@ public class UserModel implements Parcelable{
 		this.notificationModel = notificationModel;
 	}
 
-	@SerializedName("doctorinformation")
-	private DoctorInfoModel doctorInfo;
+
 
 	protected UserModel(Parcel in) {
 		message = in.readString();
@@ -79,17 +97,6 @@ public class UserModel implements Parcelable{
 		this.doctorInfo = doctorInfo;
 	}
 
-	@SerializedName("token")
-	private String token;
-
-	@SerializedName("Termsandconditions")
-	private  ConditionsModel conditionsModel;
-
-	@SerializedName("privacy")
-    private  PrivacyModel privacyModel;
-
-	@SerializedName("errors")
-	private ErrorModel errorModel;
 
     public CardInfoModel getCardInfoModel() {
         return cardInfoModel;

@@ -13,11 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".user.LoginActivity"
@@ -34,7 +30,9 @@
         <activity android:name=".FinalStepRegisterActivity" />
         <activity android:name=".privacyAndPolicy.PrivacyPolicyActivity" />
         <activity android:name=".conversation.DoctorConversationActivity" />
-        <activity android:name=".voiceChat.VoiceChatActivity" />
+        <activity android:name=".voiceChat.VoiceChatActivity" >
+
+        </activity>
         <activity android:name=".TermsAndConditionsActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".EditProfileActivity" />
@@ -45,8 +43,13 @@
         <activity android:name=".doctorList.DoctorListActivity" />
         <activity android:name=".doctorList.DoctorDetailsActivity" />
         <activity android:name=".doctorAccount.DoctorAccountActivity" />
-        <activity android:name=".user.UserConservationActivity" />
-        <activity android:name=".conversation.UserConservationActivity" />
+        <activity android:name=".conversation.UserConservationActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".userPayment.UserPaymentActivity"></activity>
         <activity android:name=".BankingExchangeActivity"></activity>
     </application>

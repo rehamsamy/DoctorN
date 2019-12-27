@@ -10,8 +10,30 @@ public class ReviewModel{
 	@SerializedName("reviews")
 	private List<ReviewsItem> reviews;
 
+	@SerializedName("review")
+	private ReviewObjectModel review;
+
+	@SerializedName("message")
+	private String message;
+
 	@SerializedName("status")
 	private boolean status;
+
+	public ReviewObjectModel getReview() {
+		return review;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setReview(ReviewObjectModel review) {
+		this.review = review;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	public void setReviews(List<ReviewsItem> reviews){
 		this.reviews = reviews;

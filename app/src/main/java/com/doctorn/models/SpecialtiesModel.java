@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class SpecialtiesModel{
 
-	@SerializedName("userspecialties")
+	@SerializedName("specializations")
 	private List<UserspecialtiesItem> userspecialties;
 
 	@SerializedName("messages")

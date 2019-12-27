@@ -14,6 +14,7 @@ import com.doctorn.R;
 import com.doctorn.conversation.DoctorConversationActivity;
 import com.doctorn.conversation.UserConservationActivity;
 import com.doctorn.models.SpecialtiesModel;
+import com.doctorn.notification.NotificationsActivity;
 import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.utils.PreferenceHelper;
 import com.doctorn.utils.RetrofitClientInstance;
@@ -103,6 +104,12 @@ public class SpecialtiesActivity extends AppCompatActivity {
         Intent intent=new Intent(SpecialtiesActivity.this, UserAccountActivity.class);
         intent.setAction("specialist");
         startActivity(intent);
+    }
+
+    @OnClick(R.id.notificaion_img)
+    void setNotificationImg(){
+        startActivity(new Intent(getApplicationContext(), NotificationsActivity.class));
+
     }
 
 }
