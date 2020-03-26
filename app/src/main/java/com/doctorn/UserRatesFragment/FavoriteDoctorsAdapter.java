@@ -15,6 +15,7 @@ import com.doctorn.R;
 import com.doctorn.interfaces.OnItemClickInterface;
 import com.doctorn.models.FavoriteDataArrayModel;
 import com.doctorn.models.ReviewsItem;
+import com.doctorn.utils.PreferenceHelper;
 
 import java.util.List;
 
@@ -60,10 +61,17 @@ public class FavoriteDoctorsAdapter extends RecyclerView.Adapter<FavoriteDoctors
             favImg.setVisibility(View.VISIBLE);
         }
 
-//        name.setText(model.ge);
-//        ratingBar.setRating(Float.valueOf(model.getUserRate()));
-//        specialistText.setVisibility(View.VISIBLE);
-//        specialistText.setText(model.getUserName());
+        if(model.getDoctorInfoModel()!=null) {
+            name.setText(model.getDoctorInfoModel().getName());
+           // ratingBar.setRating(Float.valueOf(model.getDoctorInfoModel().getDoctorTotalRate()));
+            specialistText.setVisibility(View.VISIBLE);
+            if (PreferenceHelper.getValue(mContext).equals("ar")) {
+                specialistText.setText(model.getDoctorInfoModel().getSpecializationArName());
+            } else if (PreferenceHelper.getValue(mContext).equals("en")) {
+                specialistText.setText(model.getDoctorInfoModel().getSpecializationEnName());
+            }
+
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

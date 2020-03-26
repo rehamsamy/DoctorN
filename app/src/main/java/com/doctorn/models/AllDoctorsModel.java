@@ -13,7 +13,6 @@ public class AllDoctorsModel{
 	private boolean status;
 
 	@SerializedName("doctors")
-
 	private DoctorObjectModel doctorObjectModel;
 
 	@SerializedName("doctorinfo")

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.hendiware.utils:futils:1.6.91@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/36f08b3fabf8102bd988fbac76695891/futils-1.6.91/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/36f08b3fabf8102bd988fbac76695891/futils-1.6.91/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendiware.utils/futils/1.6.91/ca62b9086ad004b5f8bd3aa2912e857231037d8/futils-1.6.91-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendiware.utils/futils/1.6.91/4718384340ed8c641afb06626fe656f3aa047aa7/futils-1.6.91-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

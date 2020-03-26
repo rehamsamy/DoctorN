@@ -15,16 +15,16 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.doctorn.LoginAsDoctorActivity;
 import com.doctorn.R;
+import com.doctorn.doctorAccount.DoctorAccountActivity;
 import com.doctorn.interfaces.OnItemClickInterface;
 import com.doctorn.models.ReviewModel;
 import com.doctorn.models.ReviewsItem;
 import com.doctorn.models.User;
-import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.EndlessRecyclerViewScrollListener;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
+import com.doctorn.voiceChat.VoiceChatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,7 +60,7 @@ public class DoctorRatesFragment extends Fragment implements OnItemClickInterfac
 
 
             buildRecyclerReview();
-            getReviews(current_page,LoginAsDoctorActivity.userModel.getToken(),LoginAsDoctorActivity.user.getId(),"doctor_id");
+            getReviews(current_page, DoctorAccountActivity.user.getToken(),DoctorAccountActivity.user.getUser().getId(),"doctor_id");
 
         return view;
     }
@@ -87,7 +87,7 @@ public class DoctorRatesFragment extends Fragment implements OnItemClickInterfac
 
     }
 
-    private void getReviews(int current_page,String token,int id,String type) {
+    private void getReviews(final int current_page, String token, int id, String type) {
         retrofitInterface=RetrofitClientInstance.getRetrofit();
         final Map<String,Object> map=new HashMap<>();
         map.put("page",current_page);
@@ -100,22 +100,26 @@ public class DoctorRatesFragment extends Fragment implements OnItemClickInterfac
             @Override
             public void onResponse(Call<ReviewModel> call, Response<ReviewModel> response) {
                 if (response.body().isStatus()) {
-                    progressBar.setVisibility(View.GONE);
-                    modelList.addAll(response.body().getReviews());
-                    adapter.notifyItemRangeInserted(adapter.getItemCount(), modelList.size());
-                    if(response.body().getReviews().size()==0){
-                        recyclerView.setVisibility(View.GONE);
-                        emptyListTxt.setVisibility(View.VISIBLE);
+                    if((response.body().getReviews().size()>0)) {
+                        Log.v("TAG","exper1");
+                        progressBar.setVisibility(View.GONE);
+                        modelList.addAll(response.body().getReviews());
+                        adapter.notifyDataSetChanged();
+                    }
+                  else  if(response.body().getReviews().size()==0&&current_page==1){
+                        Log.v("TAG","exper2");
                         progressBar.setVisibility(View.GONE);
                     }
                 }else {
-                    recyclerView.setVisibility(View.GONE);
+                    // recyclerView.setVisibility(View.GONE);
                     emptyListTxt.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
+
             }
             @Override
             public void onFailure(Call<ReviewModel> call, Throwable t) {
+                Log.v("TAG","exper3");
                 recyclerView.setVisibility(View.GONE);
                 emptyListTxt.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
@@ -140,7 +144,7 @@ public class DoctorRatesFragment extends Fragment implements OnItemClickInterfac
                 current_page++;
 
                 Log.v(TAG, "model size" + modelList.size());
-                getReviews(current_page, LoginAsDoctorActivity.userModel.getToken(), LoginAsDoctorActivity.user.getId(), "doctor_id");
+                getReviews(current_page, DoctorAccountActivity.user.getToken(),DoctorAccountActivity.user.getUser().getId(), "doctor_id");
 
             }
         });
@@ -149,8 +153,12 @@ public class DoctorRatesFragment extends Fragment implements OnItemClickInterfac
 
 
 
+
+
     @Override
     public void onItemClick(int position) {
-
+    Intent intent=new Intent(getContext(), VoiceChatActivity.class);
+    intent.putExtra(VoiceChatActivity.USER_ID,13);
+    startActivity(intent);
     }
 }

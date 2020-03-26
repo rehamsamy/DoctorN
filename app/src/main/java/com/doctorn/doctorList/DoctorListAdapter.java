@@ -39,6 +39,11 @@ public class DoctorListAdapter  extends RecyclerView.Adapter<DoctorListAdapter.H
         return new Holder(view);
     }
 
+    public void setNewList(List<DoctorItemModel> newList){
+        this.doctorModelList=newList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull Holder holder, final int i) {
         DoctorItemModel model=doctorModelList.get(i);

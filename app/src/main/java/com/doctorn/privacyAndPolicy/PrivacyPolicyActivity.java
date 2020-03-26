@@ -19,6 +19,7 @@ import com.doctorn.utils.RetrofitInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -74,5 +75,16 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
         });
     }
 
+
+    @OnClick(R.id.signUp_back_img)
+    void backClick(){
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
 }

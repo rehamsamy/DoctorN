@@ -2,7 +2,7 @@
     <item android:bottom="0dp"  android:top="13dp"
         android:left="5dp" android:right="5dp"
         android:gravity="fill_horizontal">
-        <shape android:shape="rectangle">
+        <shape android:shape="oval">
             <solid android:color="@color/pupler" />
             <corners
                 android:topLeftRadius="20dp"

@@ -15,16 +15,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.doctorn.LoginAsDoctorActivity;
 import com.doctorn.R;
+import com.doctorn.doctorList.DoctorDetailsActivity;
 import com.doctorn.interfaces.OnItemClickInterface;
 import com.doctorn.models.FavoriteDataArrayModel;
 import com.doctorn.models.FavoriteDoctorsModel;
-import com.doctorn.models.ReviewModel;
-import com.doctorn.models.ReviewsItem;
 import com.doctorn.models.User;
-import com.doctorn.user.LoginActivity;
+import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.utils.EndlessRecyclerViewScrollListener;
+import com.doctorn.utils.PreferenceHelper;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 
@@ -83,10 +82,10 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
         Map<String,Object> map=new HashMap<>();
         map.put("page",current_page);
         map.put("limit",10);
-        map.put("api_token",LoginActivity.userModel.getToken());
-        map.put("user_id",LoginActivity.user.getId());
-        Call<FavoriteDoctorsModel> call=retrofitInterface.getMyFavoriteDoctors(LoginActivity.userModel.getToken(),current_page,
-                10);
+        map.put("api_token", UserAccountActivity.user.getToken());
+        map.put("user_id",UserAccountActivity.user.getUser().getId());
+        Call<FavoriteDoctorsModel> call=retrofitInterface.getMyFavoriteDoctors( UserAccountActivity.user.getToken(),current_page,
+                10, PreferenceHelper.getValue(getContext()));
             progressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<FavoriteDoctorsModel>() {
             @Override
@@ -141,6 +140,11 @@ public class UserRatesFragment extends Fragment implements OnItemClickInterface{
 
     @Override
     public void onItemClick(int position) {
+        FavoriteDataArrayModel model=modelList.get(position);
 
+        Intent intent = new Intent(getContext(), DoctorDetailsActivity.class);
+        intent.putExtra("doc", model.getDoctorInfoModel());
+        intent.putExtra(DoctorDetailsActivity.DOCTOR_ID,model.getDoctorId());
+        startActivity(intent);
     }
 }

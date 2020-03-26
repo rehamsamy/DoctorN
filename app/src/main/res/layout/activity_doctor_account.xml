@@ -57,29 +57,52 @@
         app:layout_constraintTop_toBottomOf="@id/doctor_img_id"
         android:layout_marginTop="8dp"/>
 
-    <android.support.design.widget.TabLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/pupler"
-        app:tabSelectedTextColor="@color/White"
+
+
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/tab_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="10dp"
         android:background="@drawable/background_gray"
-        android:padding="10dp"
-        android:id="@+id/tab_layout"
-        style="@style/MyCustomTabLayout"
-        android:textAlignment="center"
-        android:scrollbarStyle="insideInset"
-        android:paddingBottom="6dp"
-        app:tabIndicatorGravity="bottom"
+        android:clipToPadding="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
+        app:stl_defaultTabTextColor="@color/pupler"
+        app:stl_defaultTabTextHorizontalPadding="18dp"
+        app:stl_dividerColor="@android:color/transparent"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="@color/pupler"
+        app:stl_indicatorCornerRadius="18dp"
+        app:stl_indicatorGravity="center"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="36dp"
+        app:stl_underlineColor="@android:color/transparent"
+        android:visibility="gone"
+        app:stl_underlineThickness="0dp"
         />
 
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_gray"
+        android:clipToPadding="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
+        app:tabSelectedTextColor="@color/White"
+       app:tabBackground="@drawable/selector"
+        app:tabMode="fixed"
+        />
 
     <android.support.v4.view.ViewPager
         android:layout_width="0dp"
@@ -111,9 +134,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/my_account_id"
+            app:layout_constraintEnd_toStartOf="@id/reservations_id"
             android:layout_marginTop="10dp"
             android:id="@+id/conversation_id"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/section"
+            android:text="@string/reservation"
+            app:layout_constraintStart_toEndOf="@id/conversation_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_account_id"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/reservations_id"
             />
 
 
@@ -128,7 +167,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/conversation_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/conversation_id"
+            app:layout_constraintStart_toEndOf="@id/reservations_id"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="15dp"
             />

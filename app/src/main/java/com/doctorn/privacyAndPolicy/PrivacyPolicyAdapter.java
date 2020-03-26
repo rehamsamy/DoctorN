@@ -45,7 +45,7 @@ public class PrivacyPolicyAdapter extends RecyclerView.Adapter<PrivacyPolicyAdap
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 1;
     }
 
     public class Holder extends RecyclerView.ViewHolder{

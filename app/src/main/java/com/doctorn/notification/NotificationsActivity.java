@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.doctorn.R;
+import com.doctorn.doctorAccount.DoctorAccountActivity;
+import com.doctorn.doctorList.DoctorListActivity;
 import com.doctorn.models.NotificationDataArrayModel;
 import com.doctorn.models.NotificationModel;
 import com.doctorn.models.UserModel;
@@ -39,15 +41,23 @@ public class NotificationsActivity extends AppCompatActivity {
     NetworkAvailable networkAvailable;
     List<NotificationDataArrayModel> notificationModels=new ArrayList<>();
     int current_page=1;
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
         ButterKnife.bind(this);
         networkAvailable=new NetworkAvailable(this);
+
+        if(DoctorListActivity.user!=null){
+           token=DoctorListActivity.user.getToken();
+        }else if(DoctorAccountActivity.user!=null){
+           token=DoctorAccountActivity.user.getToken();
+        }
+
         if (networkAvailable.isNetworkAvailable()) {
             buildRecyclerForNotification();
-            getNotifications(current_page);
+            getNotifications(current_page,token);
         } else {
             Toast.makeText(this, getString(R.string.internet_offline), Toast.LENGTH_LONG).show();
         }
@@ -63,16 +73,16 @@ public class NotificationsActivity extends AppCompatActivity {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 current_page++;
-                getNotifications(current_page);
+                getNotifications(current_page,token);
             }
         });
 
     }
 
-    private void getNotifications(final int current_page) {
+    private void getNotifications(final int current_page,String token) {
         retrofitInterface= RetrofitClientInstance.getRetrofit();
         progressBar.setVisibility(View.VISIBLE);
-        retrofit2.Call<NotificationModel> call=retrofitInterface.getNotifications(LoginActivity.userModel.getToken(),
+        retrofit2.Call<NotificationModel> call=retrofitInterface.getNotifications(token,
                 "yes",current_page,10);
 
         call.enqueue(new Callback<NotificationModel>() {

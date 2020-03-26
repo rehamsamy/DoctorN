@@ -167,8 +167,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/White"
+            android:textStyle="bold"
             android:layout_marginTop="5dp"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:padding="10dp"
             android:id="@+id/signup_btn"
             />

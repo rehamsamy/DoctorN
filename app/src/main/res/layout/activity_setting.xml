@@ -28,7 +28,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/arrow" />
+                android:src="@drawable/ic_arrow_back_eng" />
 
             <TextView
                 android:id="@+id/item_name_toolbar"
@@ -248,9 +248,35 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/my_financail"
+        app:layout_constraintStart_toStartOf="@id/view8"
+        app:layout_constraintTop_toBottomOf="@id/view8"
+        android:layout_marginTop="15dp"
+        android:id="@+id/all_financail_id"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
+        app:layout_constraintEnd_toEndOf="@id/notification_switch_id"
+        app:layout_constraintTop_toBottomOf="@id/all_financail_id"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:id="@+id/view9"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/log_out"
         app:layout_constraintStart_toStartOf="@id/notification_txtV_id"
-        app:layout_constraintTop_toBottomOf="@id/view8"
+        app:layout_constraintTop_toBottomOf="@id/view9"
         android:layout_marginTop="40dp"
         android:id="@+id/log_out_id"
         android:textColor="@color/black"

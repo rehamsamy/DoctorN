@@ -10,15 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
-import com.doctorn.LoginAsDoctorActivity;
 import com.doctorn.conversation.UserConservationActivity;
+import com.doctorn.doctorList.DoctorListActivity;
+import com.doctorn.models.UserModel;
 import com.doctorn.user.LoginActivity;
 import com.doctorn.R;
-import com.doctorn.conversation.DoctorConversationActivity;
-import com.doctorn.models.User;
 import com.doctorn.user.OurPageActivity;
 import com.doctorn.user.SpecialtiesActivity;
 import com.squareup.picasso.Picasso;
@@ -46,7 +44,7 @@ public class UserAccountActivity extends AppCompatActivity {
    UserPagerAdapter adaper;
    public static  int flag;
    public static String x;
-    User user;
+   public static UserModel user;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +52,22 @@ public class UserAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_account);
         ButterKnife.bind(this);
 
+      //  VoiceChatActivity.updateToken(FirebaseInstanceId.getInstance().getToken());
+
         x="fragment";
        // flag=2;
 
-        doctorName.setText(LoginActivity.user.getName());
+        doctorName.setText(DoctorListActivity.user.getUser().getName());
           Intent intent=getIntent();
 
         if(intent.hasExtra("update_data")){
-            User user=getIntent().getParcelableExtra("update_data");
-            doctorName.setText(user.getName());
+             user=getIntent().getParcelableExtra("update_data");
+            doctorName.setText(user.getUser().getName());
             // doctorName.setText(user.getName());
         }
        else if(intent.hasExtra("user_data")){
-            User user=intent.getParcelableExtra("user_data");
-            doctorName.setText(user.getName());
+            user=intent.getParcelableExtra("user_data");
+            doctorName.setText(user.getUser().getName());
             flag=1;
             Log.v(TAG,"flag ss"+flag);
         }
@@ -86,6 +86,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
 
     }
+
 
 
     @OnClick(R.id.doctor_img_id)

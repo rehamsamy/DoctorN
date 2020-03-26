@@ -32,7 +32,7 @@
         <FrameLayout
             android:id="@+id/card_view"
             android:layout_width="0dp"
-            android:layout_height="320dp"
+            android:layout_height="380dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo_img"
@@ -42,9 +42,23 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="360dp"
                 android:background="@drawable/edit_round"
                 android:padding="10dp">
+
+
+                <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                    android:id="@+id/work_days_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/counseling_time_input"
+                    app:layout_constraintEnd_toEndOf="@id/counseling_time_input"
+                    app:layout_constraintTop_toBottomOf="@id/hello_msg"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    />
+
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,7 +73,7 @@
                     android:layout_marginTop="20dp"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/work_days_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -77,12 +91,48 @@
                     android:layout_marginTop="30dp"
                     android:textAlignment="viewStart"
                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/work_days_input"
+                    app:layout_constraintEnd_toStartOf="@id/work_time_end"
+                    app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                    android:hint="@string/start_work_time"
+                    android:id="@+id/work_time_start"
+                    android:drawableStart="@drawable/year"
+                    android:background="@drawable/edit_round"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"/>
+
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/work_time_start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                    android:hint="@string/end_work_time"
+                    android:id="@+id/work_time_end"
+                    android:drawableStart="@drawable/year"
+                    android:background="@drawable/edit_round"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="15dp"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    android:textAlignment="viewStart"/>
+
+
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="@id/work_days_input"
                     app:layout_constraintEnd_toEndOf="@id/work_days_input"
-                    app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                    app:layout_constraintTop_toBottomOf="@id/work_time_start"
                     android:hint="@string/counseling_time"
                     android:id="@+id/counseling_time_input"
                     android:drawableStart="@drawable/year"

@@ -9,35 +9,37 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class UserModel implements Parcelable{
+public class UserModel implements Parcelable {
+
+	@SerializedName("user")
+	User user;
 
 	@SerializedName("message")
 	private String message;
 
 	@SerializedName("messages")
-	private  String messages;
+	private String messages;
 
-	@SerializedName("user")
-	private User user;
+
 
 	@SerializedName("card info")
-    CardInfoModel cardInfoModel;
+	CardInfoModel cardInfoModel;
 
 	@SerializedName("status")
 	private boolean status;
 
 	@SerializedName("doctors")
-    private  List<DoctorModel> doctorModels;
+	private List<DoctorModel> doctorModels;
 
 
 	@SerializedName("token")
 	private String token;
 
 	@SerializedName("Termsandconditions")
-	private  ConditionsModel conditionsModel;
+	private PrivacyModel conditionsModel;
 
 	@SerializedName("privacy")
-	private  PrivacyModel privacyModel;
+	private PrivacyModel privacyModel;
 
 	@SerializedName("errors")
 	private ErrorModel errorModel;
@@ -49,30 +51,21 @@ public class UserModel implements Parcelable{
 	private DoctorInfoModel doctorInfo;
 
 
-	public List<DoctorModel> getDoctorModels() {
-        return doctorModels;
-    }
-
-    public void setDoctorModels(List<DoctorModel> doctorModels) {
-        this.doctorModels = doctorModels;
-    }
-
-
-
-	public List<NotificationModel> getNotificationModel() {
-		return notificationModel;
+	public User getUser() {
+		return user;
 	}
 
-	public void setNotificationModel(List<NotificationModel> notificationModel) {
-		this.notificationModel = notificationModel;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-
+	public static Creator<UserModel> getCREATOR() {
+		return CREATOR;
+	}
 
 	protected UserModel(Parcel in) {
 		message = in.readString();
 		messages = in.readString();
-		user = in.readParcelable(User.class.getClassLoader());
 		status = in.readByte() != 0;
 		token = in.readString();
 	}
@@ -89,6 +82,24 @@ public class UserModel implements Parcelable{
 		}
 	};
 
+	public List<DoctorModel> getDoctorModels() {
+		return doctorModels;
+	}
+
+	public void setDoctorModels(List<DoctorModel> doctorModels) {
+		this.doctorModels = doctorModels;
+	}
+
+
+	public List<NotificationModel> getNotificationModel() {
+		return notificationModel;
+	}
+
+	public void setNotificationModel(List<NotificationModel> notificationModel) {
+		this.notificationModel = notificationModel;
+	}
+
+
 	public DoctorInfoModel getDoctorInfo() {
 		return doctorInfo;
 	}
@@ -98,15 +109,15 @@ public class UserModel implements Parcelable{
 	}
 
 
-    public CardInfoModel getCardInfoModel() {
-        return cardInfoModel;
-    }
+	public CardInfoModel getCardInfoModel() {
+		return cardInfoModel;
+	}
 
-    public void setCardInfoModel(CardInfoModel cardInfoModel) {
-        this.cardInfoModel = cardInfoModel;
-    }
+	public void setCardInfoModel(CardInfoModel cardInfoModel) {
+		this.cardInfoModel = cardInfoModel;
+	}
 
-    public ErrorModel getErrorModel() {
+	public ErrorModel getErrorModel() {
 		return errorModel;
 	}
 
@@ -115,34 +126,27 @@ public class UserModel implements Parcelable{
 	}
 
 	public PrivacyModel getPrivacyModel() {
-        return privacyModel;
-    }
+		return privacyModel;
+	}
 
-    public void setPrivacyModel(PrivacyModel privacyModel) {
-        this.privacyModel = privacyModel;
-    }
+	public void setPrivacyModel(PrivacyModel privacyModel) {
+		this.privacyModel = privacyModel;
+	}
 
-    public void setMessage(String message){
+	public void setMessage(String message) {
 		this.message = message;
 	}
 
-	public String getMessage(){
+	public String getMessage() {
 		return message;
 	}
 
-	public void setUser(User user){
-		this.user = user;
-	}
 
-	public User getUser(){
-		return user;
-	}
-
-	public ConditionsModel getConditionsModel() {
+	public PrivacyModel getConditionsModel() {
 		return conditionsModel;
 	}
 
-	public void setConditionsModel(ConditionsModel conditionsModel) {
+	public void setConditionsModel(PrivacyModel conditionsModel) {
 		this.conditionsModel = conditionsModel;
 	}
 
@@ -154,32 +158,33 @@ public class UserModel implements Parcelable{
 		this.messages = messages;
 	}
 
-	public void setStatus(boolean status){
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
-	public boolean isStatus(){
+	public boolean isStatus() {
 		return status;
 	}
 
-	public void setToken(String token){
+	public void setToken(String token) {
 		this.token = token;
 	}
 
-	public String getToken(){
+	public String getToken() {
 		return token;
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"UserModel{" + 
-			"message = '" + message + '\'' + 
-			",user = '" + user + '\'' + 
-			",status = '" + status + '\'' + 
-			",token = '" + token + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return
+				"UserModel{" +
+						"message = '" + message + '\'' +
+						",user = '" + user + '\'' +
+						",status = '" + status + '\'' +
+						",token = '" + token + '\'' +
+						"}";
+	}
+
 
 	@Override
 	public int describeContents() {
@@ -187,11 +192,10 @@ public class UserModel implements Parcelable{
 	}
 
 	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(message);
-		dest.writeString(messages);
-		dest.writeParcelable(user, flags);
-		dest.writeByte((byte) (status ? 1 : 0));
-		dest.writeString(token);
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeString(message);
+		parcel.writeString(messages);
+		parcel.writeByte((byte) (status ? 1 : 0));
+		parcel.writeString(token);
 	}
 }

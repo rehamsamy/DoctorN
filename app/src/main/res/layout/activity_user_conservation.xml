@@ -78,7 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
         app:layout_constraintBottom_toTopOf="@id/cn"
-        android:id="@+id/notification_progress_id"/>
+        android:id="@+id/notification_progress_id"
+        android:visibility="gone"/>
 
 
 

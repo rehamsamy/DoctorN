@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ import com.doctorn.interfaces.OnItemClickInterface;
 import com.doctorn.models.FavoriteDataArrayModel;
 import com.doctorn.models.FavoriteDoctorsModel;
 import com.doctorn.user.LoginActivity;
+import com.doctorn.userAccount.userAccount.UserAccountActivity;
 import com.doctorn.utils.EndlessRecyclerViewScrollListener;
 import com.doctorn.utils.NetworkAvailable;
+import com.doctorn.utils.PreferenceHelper;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 
@@ -77,25 +80,30 @@ public class UserArticleFragment extends Fragment implements OnItemClickInterfac
 
     private void getMyFavoriteList(final int current_page) {
         progressBar.setVisibility(View.VISIBLE);
-        retrofitInterface= RetrofitClientInstance.getRetrofit();
-        Call<FavoriteDoctorsModel> call=retrofitInterface.getMyFavoriteArticle(
-                LoginActivity.userModel.getToken(),current_page,10);
+        retrofitInterface = RetrofitClientInstance.getRetrofit();
+        Call<FavoriteDoctorsModel> call = retrofitInterface.getMyFavoriteArticle(
+                UserAccountActivity.user.getToken(), current_page, 10,
+                PreferenceHelper.getValue(getContext()));
         call.enqueue(new Callback<FavoriteDoctorsModel>() {
             @Override
             public void onResponse(Call<FavoriteDoctorsModel> call, Response<FavoriteDoctorsModel> response) {
-                if(response.body().isStatus()){
-                    if(response.body().getFavorites().getFavoriteDataArrayModelList().size()>0){
-                       favoriteAricleList.addAll(response.body().getFavorites().getFavoriteDataArrayModelList());
-                       adapter.notifyDataSetChanged();
-                       progressBar.setVisibility(View.GONE);
-                    }else if(response.body().getFavorites().getFavoriteDataArrayModelList().size()==0
-                    &&current_page==1){
+                if (response.body().isStatus()) {
+                    if (response.body().getFavorites().getFavoriteDataArrayModelList().size() > 0) {
+                        favoriteAricleList.addAll(response.body().getFavorites().getFavoriteDataArrayModelList());
+                        adapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        Log.v("TAG","Fav 1");
+                    } else if (response.body().getFavorites().getFavoriteDataArrayModelList().size() == 0
+                            && current_page == 1) {
                         emptyData.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
+                        Log.v("TAG","Fav 2");
                     }
-                }else {
+                } else {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    emptyData.setVisibility(View.VISIBLE);
+                    Log.v("TAG","Fav 3");
+                    Toast.makeText(getContext(), response.body().getError(), Toast.LENGTH_LONG).show();
                 }
             }
 

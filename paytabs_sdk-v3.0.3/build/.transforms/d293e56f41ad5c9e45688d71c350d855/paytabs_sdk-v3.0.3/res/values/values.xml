@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paytabs_all_fields_required">* All Fields are required</string>
+    <string name="paytabs_amount">Amount</string>
+    <string name="paytabs_and">and</string>
+    <string name="paytabs_card_cvv">CVV</string>
+    <string name="paytabs_card_exp_month">MM</string>
+    <string name="paytabs_card_exp_year">YY</string>
+    <string name="paytabs_card_holder_name">Name on card</string>
+    <string name="paytabs_card_number">16 digit card number</string>
+    <string name="paytabs_complete_transaction">Your transaction is successfully completed</string>
+    <string name="paytabs_cvv_hint">* CVV number is printed on the signature panel on the back of the card</string>
+    <string name="paytabs_err_amount">Amount must be between</string>
+    <string name="paytabs_err_auth">Invalid merchant credentials</string>
+    <string name="paytabs_err_card_cvv">Please enter the credit card cvv</string>
+    <string name="paytabs_err_card_exp">Please enter the credit card expiration date</string>
+    <string name="paytabs_err_card_name">Please enter the same name as on the card</string>
+    <string name="paytabs_err_card_no">Please enter a valid credit card number</string>
+    <string name="paytabs_err_invalid_exp_month">Invalid expiration month</string>
+    <string name="paytabs_err_invalid_exp_year">Invalid expiration year</string>
+    <string name="paytabs_err_no_internet">Please Connect to Internet!</string>
+    <string name="paytabs_err_timeout">Operation timed out</string>
+    <string name="paytabs_err_unknown">Unknown error occurred</string>
+    <string name="paytabs_error">Error</string>
+    <string name="paytabs_invalid_amount">Invalid Amount</string>
+    <string name="paytabs_lbl_continue">Continue</string>
+    <string name="paytabs_msg_payment_in_progress">Payment In Progress</string>
+    <string name="paytabs_msg_please_wait">Please Wait</string>
+    <string name="paytabs_msg_preparing_for_payments">Preparing For Payment \nPlease wait</string>
+    <string name="paytabs_ok">OK</string>
+    <string name="paytabs_pay_now">PAY NOW</string>
+    <string name="paytabs_start_payment_process">Starting payment process</string>
+    <string name="paytabs_trans_fail">TRANSACTION UNSUCCESSFUL</string>
+    <string name="paytabs_trans_success">TRANSACTION SUCCESSFUL</string>
+    <string name="paytabs_ur_trans_id">Your transaction ID is</string>
+    <style name="PaytabsAppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#000000</item>
+    </style>
+    <style name="PaytabsAppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="PaytabsAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="PaytabsAppThemeDark" parent="Theme.AppCompat">
+        <item name="colorAccent">#000000</item>
+    </style>
+    <style name="PaytabsAppThemeDark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="PaytabsAppThemeDark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+</resources>

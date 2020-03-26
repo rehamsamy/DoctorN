@@ -1,13 +1,14 @@
 package com.doctorn.models;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+public class User  {
 
-public class User implements Parcelable{
+	@SerializedName("is_information_found")
+	private boolean isInformationFound;
 
 	@SerializedName("user_type")
 	private String userType;
@@ -19,7 +20,7 @@ public class User implements Parcelable{
 	private String userPhone;
 
 	@SerializedName("user_age")
-	private int userAge;
+	private String userAge;
 
 	@SerializedName("user_gender")
 	private String userGender;
@@ -31,26 +32,25 @@ public class User implements Parcelable{
 	private String email;
 
 	protected User(Parcel in) {
+		isInformationFound = in.readByte() != 0;
 		userType = in.readString();
 		name = in.readString();
 		userPhone = in.readString();
-		userAge = in.readInt();
+		userAge = in.readString();
 		userGender = in.readString();
 		id = in.readInt();
 		email = in.readString();
 	}
 
-	public static final Creator<User> CREATOR = new Creator<User>() {
-		@Override
-		public User createFromParcel(Parcel in) {
-			return new User(in);
-		}
 
-		@Override
-		public User[] newArray(int size) {
-			return new User[size];
-		}
-	};
+
+	public void setIsInformationFound(boolean isInformationFound){
+		this.isInformationFound = isInformationFound;
+	}
+
+	public boolean isIsInformationFound(){
+		return isInformationFound;
+	}
 
 	public void setUserType(String userType){
 		this.userType = userType;
@@ -76,11 +76,11 @@ public class User implements Parcelable{
 		return userPhone;
 	}
 
-	public void setUserAge(int userAge){
+	public void setUserAge(String userAge){
 		this.userAge = userAge;
 	}
 
-	public int getUserAge(){
+	public String getUserAge(){
 		return userAge;
 	}
 
@@ -112,7 +112,8 @@ public class User implements Parcelable{
  	public String toString(){
 		return 
 			"User{" + 
-			"user_type = '" + userType + '\'' + 
+			"is_information_found = '" + isInformationFound + '\'' + 
+			",user_type = '" + userType + '\'' + 
 			",name = '" + name + '\'' + 
 			",user_phone = '" + userPhone + '\'' + 
 			",user_age = '" + userAge + '\'' + 
@@ -122,19 +123,4 @@ public class User implements Parcelable{
 			"}";
 		}
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(userType);
-		dest.writeString(name);
-		dest.writeString(userPhone);
-		dest.writeInt(userAge);
-		dest.writeString(userGender);
-		dest.writeInt(id);
-		dest.writeString(email);
-	}
 }

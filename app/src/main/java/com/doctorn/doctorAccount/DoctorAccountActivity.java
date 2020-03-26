@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.doctorn.LoginAsDoctorActivity;
 import com.doctorn.conversation.DoctorConversationActivity;
+import com.doctorn.doctorAccount.Reservations.ReservationsActivity;
+import com.doctorn.models.UserModel;
 import com.doctorn.user.LoginActivity;
 import com.doctorn.R;
-import com.doctorn.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -27,19 +29,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DoctorAccountActivity extends AppCompatActivity {
 
     private static final String TAG = DoctorAccountActivity.class.getSimpleName();
-    @BindView(R.id.tab_layout) TabLayout tabLayout;
+    @BindView(R.id.tab_layout1)
+    SmartTabLayout tabLayout;
+    @BindView(R.id.tab_layout)TabLayout tabLayout1;
     @BindView(R.id.view_pager) ViewPager viewPager;
     @BindView(R.id.doctor_name_id) TextView doctorName;
     @BindView(R.id.doctor_img_id)
     CircleImageView circleImageView;
+    public  static  UserModel user;
 
      @BindView(R.id.my_account_id)TextView myAccountTab;
     @BindView(R.id.conversation_id)TextView conservationTab;
     private static int PC_Picker=1;
 
     DoctorPagerAdapter adaper;
+    public static String token="dSpAu7zAckE:APA91bELLoRol98uXADNvNWzRZ0Nx0L5DgWY1jhkeyUUWWowa35zEUGSBIYQRNUOhCu8PCu2Ji";
     public static  int flag;
-    User user;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +52,27 @@ public class DoctorAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_account);
         ButterKnife.bind(this);
 
-       // doctorName.setText(LoginAsDoctorActivity.user.getName());
         Intent intent=getIntent();
 
-
         if(intent.hasExtra("update_data")){
-            User user=getIntent().getParcelableExtra("update_data");
-            doctorName.setText(user.getName());
-            // doctorName.setText(user.getName());
+             user=getIntent().getParcelableExtra("update_data");
+            doctorName.setText(user.getUser().getName());
         }
         else if(intent.hasExtra("doctor_data")){
-               User user=getIntent().getParcelableExtra("doctor_data");
+               user=getIntent().getParcelableExtra("doctor_data");
+               Log.v("TAG","xxx  xxx"+user.toString());
+             doctorName.setText(user.getUser().getName());
             flag=2;
             Log.v(TAG,"flag ss"+flag);
         }
+Log.v("TAG","sssss  "+ FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         adaper=new DoctorPagerAdapter(getSupportFragmentManager());
-        tabLayout.setupWithViewPager(viewPager);
+
         viewPager.setAdapter(adaper);
-        tabLayout.setSelectedTabIndicatorHeight(0);
+        tabLayout.setViewPager(viewPager);
+        tabLayout1.setupWithViewPager(viewPager);
+        //tabLayout.setSelectedTabIndicatorHeight(0);
 
     }
 
@@ -74,6 +81,14 @@ public class DoctorAccountActivity extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(), DoctorConversationActivity.class);
             startActivity(intent);
 
+
+
+    }
+
+    @OnClick(R.id.reservations_id)
+    void reservationClick(){
+        Intent intent=new Intent(getApplicationContext(), ReservationsActivity.class);
+        startActivity(intent);
 
 
     }

@@ -28,7 +28,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/arrow" />
+                android:src="@drawable/ic_arrow_back_eng" />
 
 
             <ImageView
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/doctor"
-        android:scaleType="center"
+        android:scaleType="fitCenter"
         />
 
         <LinearLayout
@@ -134,8 +134,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cn"
         android:padding="10dp">
-
-
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/article_label_id"
@@ -157,8 +158,10 @@
         android:text="@string/privacy_policy_subject"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:paddingBottom="10dp"
         android:textAlignment="viewStart"
         />
+        </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
 

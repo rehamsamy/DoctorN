@@ -1,63 +1,67 @@
 package com.doctorn.conversation;
 
 public class Message {
-    private String message,name,time,token;
-    int id;
 
-//    public Message(String message, String name, String time) {
-//        this.message = message;
-//        this.name = name;
-//        this.time = time;
-//    }
+    private String message,sender,receiver,date,tokenSend,tokenReceive;
 
-    public Message(String token, int id, String message) {
+    public Message(String message, String sender, String receiver, String date, String tokenSend, String tokenReceive) {
         this.message = message;
-       this.id=id;
-       this.token=token;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.date = date;
+        this.tokenSend = tokenSend;
+        this.tokenReceive = tokenReceive;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getTokenSend() {
+        return tokenSend;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTokenSend(String tokenSend) {
+        this.tokenSend = tokenSend;
     }
 
-    public String getToken() {
-        return token;
+    public String getTokenReceive() {
+        return tokenReceive;
     }
 
-    public int getId() {
-        return id;
+    public void setTokenReceive(String tokenReceive) {
+        this.tokenReceive = tokenReceive;
     }
 
     public Message() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getMessage() {
         return message;
     }
 
+    public String getSender() {
+        return sender;
+    }
 
-    public String getTime() {
-        return time;
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public void setMessage(String message) {
         this.message = message;
     }
 
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 }

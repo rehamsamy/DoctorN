@@ -41,6 +41,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:id="@+id/notificaion_img"
+                android:visibility="gone"
                 />
 
 
@@ -79,6 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
         app:layout_constraintBottom_toTopOf="@id/cn"
+        android:visibility="gone"
         android:id="@+id/notification_progress_id"/>
 
 
@@ -105,7 +107,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/my_account_id"
+            app:layout_constraintEnd_toStartOf="@id/reservations_id"
             android:layout_marginTop="10dp"
             android:id="@+id/conversation_id"
             />
@@ -122,10 +124,32 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/conversation_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/conversation_id"
+            app:layout_constraintStart_toEndOf="@id/reservations_id"
             android:layout_marginBottom="10dp"
             android:textAlignment="center"
             />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/section"
+            android:text="@string/reservation"
+            app:layout_constraintStart_toEndOf="@id/conversation_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_account_id"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/reservations_id"
+            />
+
+
+
+
+
 
 
     </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="12dp"
+    android:background="@drawable/edit_round"
+    android:layout_marginBottom="5dp"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/doctor_img_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/doc"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/doctor_name_id"
+            app:layout_constraintStart_toEndOf="@id/doctor_img_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/specialist_name_id"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:text="@string/doctor_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/specialist_name_id"
+            app:layout_constraintStart_toStartOf="@id/doctor_name_id"
+            app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
+            app:layout_constraintBottom_toTopOf="@id/rating_bar"
+            android:text="@string/doctor_name"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:visibility="visible"/>
+
+
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating_bar"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            app:layout_constraintStart_toStartOf="@id/doctor_name_id"
+            app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="10dp"
+            android:numStars="5"
+            android:rating="4"
+            android:visibility="visible"
+
+            />
+
+        <ImageView
+            android:id="@+id/fav_img_id"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

@@ -5,16 +5,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.doctorn.doctorAccount.DoctorAccountActivity;
+import com.doctorn.doctorList.DoctorListActivity;
 import com.doctorn.models.UserModel;
+import com.doctorn.myFinancail.AllFinancialActivity;
 import com.doctorn.privacyAndPolicy.PrivacyPolicyActivity;
 import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.PreferenceHelper;
@@ -23,8 +29,10 @@ import com.doctorn.utils.RetrofitInterface;
 
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemSelected;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,18 +43,38 @@ public class SettingActivity extends AppCompatActivity {
     private static final String TAG =SettingActivity.class.getSimpleName() ;
     private static String lang_selected="en";
     static RetrofitInterface retrofitInterface;
+    @BindView(R.id.add_balance_id) TextView balancetxt;
     Intent intent;
+    SharedPreferences preferences,preferences1;
+    SharedPreferences.Editor editor,editor1;
+    int flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
+        preferences=getSharedPreferences("user_data",MODE_PRIVATE);
+        editor=preferences.edit();
+        preferences1=getSharedPreferences("doctor_data",MODE_PRIVATE);
+        editor1=preferences1.edit();
         intent=getIntent();
+        if(DoctorListActivity.user!=null){
+             balancetxt.setVisibility(View.GONE);
+             flag=1;
+        }else if(DoctorAccountActivity.user !=null){
+            balancetxt.setVisibility(View.VISIBLE);
+            flag=2;
+        }
     }
 
     @OnClick(R.id.suggestions_complaints_id)
     void sendSuggestion(){
         startActivity(new Intent(SettingActivity.this,SuggestionComplaintsActivity.class));
+    }
+
+    @OnClick(R.id.terms_conditions_id)
+    void termsClick(){
+        startActivity(new Intent(SettingActivity.this,TermsAndConditionsActivity.class));
     }
 
     @OnClick(R.id.privacy_policy_id)
@@ -56,13 +84,13 @@ public class SettingActivity extends AppCompatActivity {
 
     @OnClick(R.id.add_balance_id)
     void addBalanceClick(){
-        Intent intent1=new Intent(SettingActivity.this,RegisterCreditCardActivity.class);
+        Intent intent1=new Intent(SettingActivity.this,BalanceActivity.class);
         if(intent.getAction().equals(EditProfileActivity.update_user)){
-            intent1.setAction(EditProfileActivity.update_user);
-            startActivity(intent1);
+           // intent1.setAction(EditProfileActivity.update_user);
+            //startActivity(intent1);
 
         }else if(intent.getAction().equals(EditProfileActivity.update_doctor)){
-            intent1.setAction(EditProfileActivity.update_doctor);
+           // intent1.setAction(EditProfileActivity.update_doctor);
             startActivity(intent1);
         }
 
@@ -131,6 +159,16 @@ public class SettingActivity extends AppCompatActivity {
                 if(response.body().isStatus()){
                     Toast.makeText(SettingActivity.this, response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                  //  if(flag==1){
+                      //preferences=getSharedPreferences("user_data",MODE_PRIVATE);
+                    //  editor=preferences.edit();
+                   // }else if(flag==2){
+                      //  preferences=getSharedPreferences("doctor_data",MODE_PRIVATE);
+                      //  editor=preferences.edit();
+                   // }
+                    editor.clear().commit();
+                    editor1.clear().commit();
+
                 }else {
                     Toast.makeText(SettingActivity.this, response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
 
@@ -145,5 +183,18 @@ public class SettingActivity extends AppCompatActivity {
 
 
     }
+
+    @OnClick(R.id.all_financail_id)
+    void onFinancailClick(){
+        startActivity(new Intent(getApplicationContext(), AllFinancialActivity.class));
+    }
+
+
+    @OnClick(R.id.about_app_id)
+   void aboutAppClick(){
+       startActivity(new Intent(getApplicationContext(),AboutAppActivity.class));
+    }
+
+
 
 }

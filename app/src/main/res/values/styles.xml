@@ -12,6 +12,7 @@
         <item name="tabBackground">@drawable/tab_bg</item>
         <item name="tabIndicatorGravity">center</item>
         <item name="tabGravity">center</item>
+        <item name="tabIndicator">@drawable/tab_bg</item>
     </style>
 
     <style name="rate_bar">

@@ -1,11 +1,15 @@
 package com.doctorn.user;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -23,10 +27,18 @@ import com.doctorn.SplashActivity;
 import com.doctorn.doctorList.DoctorListActivity;
 import com.doctorn.models.User;
 import com.doctorn.models.UserModel;
+import com.doctorn.utils.DailogUtil;
 import com.doctorn.utils.NetworkAvailable;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,10 +59,13 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.progress_id) ProgressBar progressBar;
     @BindView(R.id.login_asDoctor_id) TextView loginDoctor;
     @BindView(R.id.view_password_id) ImageView viewPassword;
-    public  static   User user;
+    public  static User user;
     public static  UserModel userModel;
     NetworkAvailable available;
     Animation up,down;
+    DailogUtil dailogUtil;
+    FirebaseAuth firebaseAuth;
+    DatabaseReference reference;
 
     RetrofitInterface retrofitInterface;
     SharedPreferences preferences;
@@ -62,13 +77,16 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         up= AnimationUtils.loadAnimation(this,R.anim.uptodown);
         down=AnimationUtils.loadAnimation(this,R.anim.downtoup);
+        dailogUtil=new DailogUtil();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         available=new NetworkAvailable(this);
 
 
         imageView.setAnimation(down);
         frameLayout.setAnimation(up);
-        preferences=getSharedPreferences("data",MODE_PRIVATE);
+        preferences=getSharedPreferences("user_data",MODE_PRIVATE);
        passwordInput.setText(preferences.getString("password",null));
         emailInput.setText(preferences.getString("email",null));
 
@@ -122,7 +140,8 @@ public class LoginActivity extends AppCompatActivity {
         map.put("email",emailInput.getText().toString());
         map.put("password",passwordInput.getText().toString());
          retrofitInterface= RetrofitClientInstance.getRetrofit();
-         progressBar.setVisibility(View.VISIBLE);
+        final ProgressDialog progressDialog= dailogUtil.showProgress(LoginActivity.this,getString(R.string.wait_loading),false);
+         progressBar.setVisibility(View.GONE);
          Call<UserModel> call=retrofitInterface.loginUser(map);
          call.enqueue(new Callback<UserModel>() {
              @Override
@@ -131,12 +150,29 @@ public class LoginActivity extends AppCompatActivity {
                  if(response.body().isStatus()){
                      userModel=response.body();
                      user=response.body().getUser();
-                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                     Intent intent=new Intent(LoginActivity.this,DoctorListActivity.class);
-                     intent.putExtra("user_data",user);
-                     startActivity(intent);
+                     if(user.getUserType().equals("user")){
+                         loginToFirebase(progressDialog);
+                         userModel.setToken(userModel.getToken());
+                         userModel.setUser(userModel.getUser());
+                         Gson gson=new Gson();
+                         String doctor_data=gson.toJson(userModel);
+                         editor=getSharedPreferences("user_data",MODE_PRIVATE).edit();
+                         editor.putString("user_model",doctor_data);
+                         Log.v("TAG","user_model"+gson.toString());
+                         editor.commit();
+                     }else{
+                         Toast.makeText(LoginActivity.this, getString(R.string.you_register_as_user), Toast.LENGTH_LONG).show();
+                         progressDialog.dismiss();
+                     }
+
+
+
+                     //Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+
                  }else {
                      Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                     progressDialog.dismiss();
                  }
 
 
@@ -144,9 +180,42 @@ public class LoginActivity extends AppCompatActivity {
 
              @Override
              public void onFailure(Call<UserModel> call, Throwable t) {
-
+                progressDialog.dismiss();
              }
          });
+
+    }
+
+    private void loginToFirebase(final ProgressDialog progressDialog) {
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth.signInWithEmailAndPassword(emailInput.getText().toString(),passwordInput.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+
+                           reference= FirebaseDatabase.getInstance().getReference();
+                           reference=reference.child("users").child(firebaseAuth.getCurrentUser().getUid());
+                           Map<String,Object> map=new HashMap<>();
+                            map.put("name",user.getName());
+                            map.put("id",firebaseAuth.getCurrentUser().getUid());
+                            map.put("type","user");
+                            map.put("key","user"+String.valueOf(user.getId()));
+                            reference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                   if(task.isSuccessful()){
+                                       Log.v("TAG","sucesssss");
+                                       Intent intent=new Intent(LoginActivity.this,DoctorListActivity.class);
+                                       intent.putExtra("user_data",userModel);
+                                       startActivity(intent);
+                                       progressDialog.dismiss();
+                                   }
+                                }
+                            });
+                        }
+                    }
+                });
 
     }
 

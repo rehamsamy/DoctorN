@@ -37,7 +37,7 @@
         <FrameLayout
             android:id="@+id/card_view"
             android:layout_width="0dp"
-            android:layout_height="490dp"
+            android:layout_height="550dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo_img"
@@ -47,7 +47,7 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="470dp"
+                android:layout_height="530dp"
                 android:background="@drawable/edit_round"
                 android:padding="10dp">
 
@@ -206,13 +206,30 @@
                     android:hint="@string/password"
                     android:drawableStart="@drawable/password"
                     android:background="@drawable/edit_round"
-                    android:drawableEnd="@drawable/ok"
                     android:drawablePadding="20dp"
                     android:layout_marginTop="10dp"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textAlignment="viewStart"
                     android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/choose_photo_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    app:layout_constraintStart_toStartOf="@id/user_name_input"
+                    app:layout_constraintEnd_toEndOf="@id/user_name_input"
+                    app:layout_constraintTop_toBottomOf="@+id/user_confirm_password_input"
+                    android:background="@drawable/edit_round"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/upload_product_photo"
+                    android:text="@string/choose_photo"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"/>
 
                 <ProgressBar
                     android:id="@+id/progress_id"

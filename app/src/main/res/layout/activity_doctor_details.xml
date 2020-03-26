@@ -128,13 +128,27 @@
         android:textAllCaps="false"
         android:layout_marginTop="10dp"/>
 
+        <Button
+            android:id="@+id/chat_btn_id"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reservate_btn_id"
+            android:background="@drawable/red_background"
+            android:textColor="@color/White"
+            android:text="@string/chat_with_doctor"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/cn1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reservate_btn_id"
+        app:layout_constraintTop_toBottomOf="@id/chat_btn_id"
         android:background="@drawable/constraint_background"
        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -316,7 +330,11 @@
             android:textAlignment="viewStart"/>
 
 
+
     </android.support.constraint.ConstraintLayout>
+
+
+
     </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

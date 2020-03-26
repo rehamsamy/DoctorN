@@ -1,10 +1,49 @@
 package com.doctorn.models;
 
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-
 public class DoctorInfoModel{
+
+	@SerializedName("DoctorTotalRate")
+	private String doctorTotalRate;
+
+	@SerializedName("show")
+	private int show;
+
+	@SerializedName("created_at")
+	private String createdAt;
+
+	@SerializedName("languages_ar")
+	private List<String> languagesAr;
+
+	@SerializedName("specialization_en_name")
+	private String specializationEnName;
+
+	@SerializedName("doctor_id")
+	private int doctorId;
+
+	@SerializedName("specialization_id")
+	private int specializationId;
+
+	@SerializedName("languages_en")
+	private List<String> languagesEn;
+
+	@SerializedName("updated_at")
+	private String updatedAt;
+
+	@SerializedName("graduation_universty")
+	private String graduationUniversty;
+
+	@SerializedName("consultation_duration")
+	private int consultationDuration;
+
+	@SerializedName("id")
+	private int id;
+
+	@SerializedName("email")
+	private String email;
 
 	@SerializedName("Account_Activation")
 	private String accountActivation;
@@ -24,44 +63,130 @@ public class DoctorInfoModel{
 	@SerializedName("degree")
 	private String degree;
 
-	@SerializedName("show")
-	private int show;
-
 	@SerializedName("work_end_time")
 	private String workEndTime;
-
-	@SerializedName("created_at")
-	private String createdAt;
 
 	@SerializedName("consultation_price")
 	private int consultationPrice;
 
-	@SerializedName("doctor_id")
-	private int doctorId;
-
-	@SerializedName("specialization_id")
-	private int specializationId;
-
-	@SerializedName("updated_at")
-	private String updatedAt;
+	@SerializedName("workdays_en")
+	private List<String> workdaysEn;
 
 	@SerializedName("name")
 	private String name;
 
-	@SerializedName("graduation_universty")
-	private String graduationUniversty;
+	@SerializedName("specialization_ar_name")
+	private String specializationArName;
 
-	@SerializedName("consultation_duration")
-	private int consultationDuration;
-
-	@SerializedName("id")
-	private int id;
+	@SerializedName("workdays_ar")
+	private List<String> workdaysAr;
 
 	@SerializedName("work_days")
 	private String workDays;
 
-	@SerializedName("email")
-	private String email;
+	public void setDoctorTotalRate(String doctorTotalRate){
+		this.doctorTotalRate = doctorTotalRate;
+	}
+
+	public String getDoctorTotalRate(){
+		return doctorTotalRate;
+	}
+
+	public void setShow(int show){
+		this.show = show;
+	}
+
+	public int getShow(){
+		return show;
+	}
+
+	public void setCreatedAt(String createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedAt(){
+		return createdAt;
+	}
+
+	public void setLanguagesAr(List<String> languagesAr){
+		this.languagesAr = languagesAr;
+	}
+
+	public List<String> getLanguagesAr(){
+		return languagesAr;
+	}
+
+	public void setSpecializationEnName(String specializationEnName){
+		this.specializationEnName = specializationEnName;
+	}
+
+	public String getSpecializationEnName(){
+		return specializationEnName;
+	}
+
+	public void setDoctorId(int doctorId){
+		this.doctorId = doctorId;
+	}
+
+	public int getDoctorId(){
+		return doctorId;
+	}
+
+	public void setSpecializationId(int specializationId){
+		this.specializationId = specializationId;
+	}
+
+	public int getSpecializationId(){
+		return specializationId;
+	}
+
+	public void setLanguagesEn(List<String> languagesEn){
+		this.languagesEn = languagesEn;
+	}
+
+	public List<String> getLanguagesEn(){
+		return languagesEn;
+	}
+
+	public void setUpdatedAt(String updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public String getUpdatedAt(){
+		return updatedAt;
+	}
+
+	public void setGraduationUniversty(String graduationUniversty){
+		this.graduationUniversty = graduationUniversty;
+	}
+
+	public String getGraduationUniversty(){
+		return graduationUniversty;
+	}
+
+	public void setConsultationDuration(int consultationDuration){
+		this.consultationDuration = consultationDuration;
+	}
+
+	public int getConsultationDuration(){
+		return consultationDuration;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getId(){
+		return id;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+	public String getEmail(){
+		return email;
+	}
 
 	public void setAccountActivation(String accountActivation){
 		this.accountActivation = accountActivation;
@@ -111,28 +236,12 @@ public class DoctorInfoModel{
 		return degree;
 	}
 
-	public void setShow(int show){
-		this.show = show;
-	}
-
-	public int getShow(){
-		return show;
-	}
-
 	public void setWorkEndTime(String workEndTime){
 		this.workEndTime = workEndTime;
 	}
 
 	public String getWorkEndTime(){
 		return workEndTime;
-	}
-
-	public void setCreatedAt(String createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public String getCreatedAt(){
-		return createdAt;
 	}
 
 	public void setConsultationPrice(int consultationPrice){
@@ -143,28 +252,12 @@ public class DoctorInfoModel{
 		return consultationPrice;
 	}
 
-	public void setDoctorId(int doctorId){
-		this.doctorId = doctorId;
+	public void setWorkdaysEn(List<String> workdaysEn){
+		this.workdaysEn = workdaysEn;
 	}
 
-	public int getDoctorId(){
-		return doctorId;
-	}
-
-	public void setSpecializationId(int specializationId){
-		this.specializationId = specializationId;
-	}
-
-	public int getSpecializationId(){
-		return specializationId;
-	}
-
-	public void setUpdatedAt(String updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public String getUpdatedAt(){
-		return updatedAt;
+	public List<String> getWorkdaysEn(){
+		return workdaysEn;
 	}
 
 	public void setName(String name){
@@ -175,28 +268,20 @@ public class DoctorInfoModel{
 		return name;
 	}
 
-	public void setGraduationUniversty(String graduationUniversty){
-		this.graduationUniversty = graduationUniversty;
+	public void setSpecializationArName(String specializationArName){
+		this.specializationArName = specializationArName;
 	}
 
-	public String getGraduationUniversty(){
-		return graduationUniversty;
+	public String getSpecializationArName(){
+		return specializationArName;
 	}
 
-	public void setConsultationDuration(int consultationDuration){
-		this.consultationDuration = consultationDuration;
+	public void setWorkdaysAr(List<String> workdaysAr){
+		this.workdaysAr = workdaysAr;
 	}
 
-	public int getConsultationDuration(){
-		return consultationDuration;
-	}
-
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
-		return id;
+	public List<String> getWorkdaysAr(){
+		return workdaysAr;
 	}
 
 	public void setWorkDays(String workDays){
@@ -207,37 +292,36 @@ public class DoctorInfoModel{
 		return workDays;
 	}
 
-	public void setEmail(String email){
-		this.email = email;
-	}
-
-	public String getEmail(){
-		return email;
-	}
-
 	@Override
  	public String toString(){
 		return 
 			"DoctorInfoModel{" + 
-			"account_Activation = '" + accountActivation + '\'' + 
+			"doctorTotalRate = '" + doctorTotalRate + '\'' + 
+			",show = '" + show + '\'' + 
+			",created_at = '" + createdAt + '\'' + 
+			",languages_ar = '" + languagesAr + '\'' + 
+			",specialization_en_name = '" + specializationEnName + '\'' + 
+			",doctor_id = '" + doctorId + '\'' + 
+			",specialization_id = '" + specializationId + '\'' + 
+			",languages_en = '" + languagesEn + '\'' + 
+			",updated_at = '" + updatedAt + '\'' + 
+			",graduation_universty = '" + graduationUniversty + '\'' + 
+			",consultation_duration = '" + consultationDuration + '\'' + 
+			",id = '" + id + '\'' + 
+			",email = '" + email + '\'' + 
+			",account_Activation = '" + accountActivation + '\'' + 
 			",work_start_time = '" + workStartTime + '\'' + 
 			",profession_license = '" + professionLicense + '\'' + 
 			",languages = '" + languages + '\'' + 
 			",graduation_year = '" + graduationYear + '\'' + 
 			",degree = '" + degree + '\'' + 
-			",show = '" + show + '\'' + 
 			",work_end_time = '" + workEndTime + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
 			",consultation_price = '" + consultationPrice + '\'' + 
-			",doctor_id = '" + doctorId + '\'' + 
-			",specialization_id = '" + specializationId + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
+			",workdays_en = '" + workdaysEn + '\'' + 
 			",name = '" + name + '\'' + 
-			",graduation_universty = '" + graduationUniversty + '\'' + 
-			",consultation_duration = '" + consultationDuration + '\'' + 
-			",id = '" + id + '\'' + 
+			",specialization_ar_name = '" + specializationArName + '\'' + 
+			",workdays_ar = '" + workdaysAr + '\'' + 
 			",work_days = '" + workDays + '\'' + 
-			",email = '" + email + '\'' + 
 			"}";
 		}
 }

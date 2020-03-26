@@ -18,6 +18,17 @@ public class FavoriteDoctorsModel{
 	@SerializedName("status")
 	private boolean status;
 
+	@SerializedName("error")
+	private String error;
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
 	public FavoriteDataArrayModel getFavoriteDataArrayModel() {
 		return favoriteDataArrayModel;
 	}

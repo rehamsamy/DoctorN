@@ -49,7 +49,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="380dp"
                     android:background="@drawable/edit_round"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                   >
 
                     <ProgressBar
                         android:layout_width="wrap_content"
@@ -147,7 +148,7 @@
                         android:textSize="14sp"/>
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/user_type_input"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -159,13 +160,40 @@
                         android:background="@drawable/edit_round"
                         android:drawablePadding="20dp"
                         android:layout_marginTop="10dp"
+                        android:inputType="none"
                         android:padding="10dp"
                         android:textAlignment="viewStart"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <Spinner
+                        android:id="@+id/gender_spinner_id"
+                        app:layout_constraintEnd_toEndOf="@id/user_type_input"
+                        app:layout_constraintTop_toTopOf="@id/user_type_input"
+                        app:layout_constraintBottom_toBottomOf="@id/user_type_input"
+                        android:layout_marginEnd="15dp"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        style="@style/Widget.AppCompat.Spinner.DropDown"
+                        ></Spinner>
 
 
 
                 </android.support.constraint.ConstraintLayout>
+
+<!--                <Button-->
+<!--                    android:layout_width="183dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="@drawable/button_background"-->
+<!--                    android:textColor="@color/pupler"-->
+<!--                    android:text="@string/edit_profile"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:layout_gravity="center_horizontal|bottom"-->
+<!--                    android:id="@+id/edit_profile_btn"-->
+<!--                  android:elevation="15dp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    />-->
 
                 <Button
                     android:layout_width="183dp"
@@ -177,9 +205,8 @@
                     android:layout_gravity="center_horizontal|bottom"
                     android:id="@+id/edit_profile_btn"
                     android:elevation="32dp"
-                    android:textSize="18sp"
+                    android:textSize="18sp"/>
 
-                    />
 
             </FrameLayout>
 

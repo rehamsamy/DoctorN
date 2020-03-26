@@ -54,7 +54,7 @@ public class SpecialtiesActivity extends AppCompatActivity {
         Map<String,Object> map=new HashMap<>();
         map.put("page",1);
         map.put("limit",10);
-        map.put("api_token",LoginActivity.userModel.getToken());
+        map.put("api_token",UserAccountActivity.user.getToken());
         retrofitInterface= RetrofitClientInstance.getRetrofit();
         progressBar.setVisibility(View.VISIBLE);
         Call<SpecialtiesModel> call=retrofitInterface.getSpecialities(map);

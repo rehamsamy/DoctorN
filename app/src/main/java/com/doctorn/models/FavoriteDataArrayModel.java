@@ -25,6 +25,29 @@ public class FavoriteDataArrayModel{
 	@SerializedName("favorite_id")
 	private int favoriteId;
 
+	@SerializedName("article")
+	private  ArticleModel articleModel;
+
+	@SerializedName("doctorinfo")
+	private  DoctorItemModel doctorInfoModel;
+
+
+	public DoctorItemModel getDoctorInfoModel() {
+		return doctorInfoModel;
+	}
+
+	public void setDoctorInfoModel(DoctorItemModel doctorInfoModel) {
+		this.doctorInfoModel = doctorInfoModel;
+	}
+
+	public ArticleModel getArticleModel() {
+		return articleModel;
+	}
+
+	public void setArticleModel(ArticleModel articleModel) {
+		this.articleModel = articleModel;
+	}
+
 	public void setArticleId(Object articleId){
 		this.articleId = articleId;
 	}

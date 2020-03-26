@@ -1,0 +1,349 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContinuRegisterActivity"
+    android:background="@drawable/gradiant_background">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+
+
+
+            <FrameLayout
+                android:id="@+id/card_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                >
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_round"
+                    android:padding="10dp">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/signup_msg_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/signup_msg"
+                        android:ellipsize="middle"
+                        android:minLines="2"
+                        android:visibility="gone"
+                        android:maxLines="2"/>
+
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/signup_msg_id"
+                 android:id="@+id/university_txt"
+                 android:textColor="@color/black"
+                 android:text="@string/university"
+                 android:visibility="gone"
+                 />
+                    <EditText
+                        android:id="@+id/graduate_university_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_round"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/signup_msg_id"
+                        android:hint="@string/graduate_university"
+                        android:drawableStart="@drawable/certificate"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:drawablePadding="20dp"
+                        android:textAlignment="viewStart"
+                        android:padding="10dp"
+                        android:layout_marginTop="20dp"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/graduate_university_input"
+                        android:hint="@string/graduate_year"
+                        android:id="@+id/graduation_year_input"
+                        android:drawableStart="@drawable/certificate"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+
+
+
+                    <EditText
+                        android:id="@+id/degree_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/graduation_year_input"
+                        android:hint="@string/degree"
+                        android:drawableStart="@drawable/bag"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"/>
+
+
+
+                    <Spinner
+                        android:id="@+id/specialist_spinner_id"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toTopOf="@id/specialist_value_id"
+                        app:layout_constraintBottom_toBottomOf="@id/specialist_value_id"
+                        app:layout_constraintStart_toStartOf="@id/degree_input"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintTop_toBottomOf="@id/degree_input"
+                        app:layout_constraintStart_toStartOf="@id/degree_input"
+                        app:layout_constraintEnd_toEndOf="@id/degree_input"
+                        android:text="@string/specialist"
+                        android:textSize="16sp"
+                        android:textAlignment="center"
+                        android:id="@+id/specialist_value_id"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+                        android:paddingTop="7dp"
+                        tools:ignore="RtlCompat" />
+
+
+
+                    <TextView
+                        android:id="@+id/language_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/specialist_value_id"
+                        android:text="@string/change_language"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/languages"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textAlignment="center"
+                        android:textSize="14sp"/>
+
+
+                    <TextView
+                        android:id="@+id/profession_license"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        app:layout_constraintEnd_toEndOf="@id/graduate_university_input"
+                        app:layout_constraintTop_toBottomOf="@+id/language_input"
+                        android:text="@string/profession_license"
+                        android:drawableStart="@drawable/book"
+                        android:drawableEnd="@drawable/upload_product_photo"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textAlignment="center"
+                        android:textSize="14sp"/>
+
+
+
+                    <TextView
+                        android:id="@+id/work_days_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_round"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/profession_license"
+                        android:hint="@string/choosing_day"
+                        android:drawableStart="@drawable/year"
+                        android:textSize="14sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:drawablePadding="20dp"
+                        android:padding="10dp"
+                        android:layout_marginTop="30dp"
+                        android:textAlignment="viewStart"
+                        />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/work_days_input"
+                        app:layout_constraintEnd_toStartOf="@id/work_time_end"
+                        app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                        android:hint="@string/start_work_time"
+                        android:id="@+id/work_time_start"
+                        android:drawableStart="@drawable/year"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="15dp"
+                        android:textSize="14sp"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"/>
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/work_time_start"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/work_days_input"
+                        android:hint="@string/end_work_time"
+                        android:id="@+id/work_time_end"
+                        android:drawableStart="@drawable/year"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="15dp"
+                        android:textSize="14sp"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"/>
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/work_days_input"
+                        app:layout_constraintEnd_toEndOf="@id/work_days_input"
+                        app:layout_constraintTop_toBottomOf="@id/work_time_start"
+                        android:hint="@string/counseling_time"
+                        android:id="@+id/counseling_time_input"
+                        android:drawableStart="@drawable/year"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="15dp"
+                        android:textSize="14sp"
+                        android:padding="10dp"
+                        android:textAlignment="viewStart"/>
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/work_days_input"
+                        app:layout_constraintEnd_toEndOf="@id/work_days_input"
+                        app:layout_constraintTop_toBottomOf="@+id/counseling_time_input"
+                        android:hint="@string/counseling_price"
+                        android:id="@+id/price_input"
+                        android:drawableStart="@drawable/year"
+                        android:background="@drawable/edit_round"
+                        android:drawablePadding="20dp"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:textAlignment="viewStart"
+                        />
+
+
+
+
+
+
+                    <CheckBox
+                        android:id="@+id/accept_checkbox_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accept_policy"
+                        app:layout_constraintTop_toBottomOf="@id/profession_license"
+                        app:layout_constraintStart_toStartOf="@id/graduate_university_input"
+                        android:layout_marginTop="8dp"
+                        android:textSize="10sp"
+                        android:visibility="gone"/>
+
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+
+            </FrameLayout>
+
+            <Button
+                android:layout_width="183dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_background"
+                android:textColor="@color/pupler"
+                android:text="@string/edit_profile"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/edit_btn_id"
+                android:elevation="32dp"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/card_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/have_account_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/have_account"
+                app:layout_constraintTop_toBottomOf="@id/card_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="50dp"
+                android:textColor="@color/White"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:padding="10dp"
+                android:fontFamily="sans-serif-condensed"
+                />
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

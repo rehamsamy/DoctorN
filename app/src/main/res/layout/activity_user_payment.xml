@@ -28,7 +28,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/arrow"
+                android:src="@drawable/ic_arrow_back_eng"
                 android:visibility="gone"/>
 
 

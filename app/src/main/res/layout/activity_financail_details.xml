@@ -1,0 +1,368 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doctorAccount.Reservations.ReservationsDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/back_eng"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_back_eng"
+                android:visibility="visible"/>
+
+
+            <TextView
+                android:id="@+id/item_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/doctor_detail"
+                android:textColor="@color/pupler"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/White"
+        android:layout_marginTop="15dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:background="@color/White"
+            android:paddingStart="20dp"
+            android:paddingTop="30dp"
+            android:paddingEnd="20dp"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/doctor_img_id"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/doc"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="25dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/doctor_name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/doctor_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/doctor_img_id"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"/>
+
+
+            <RatingBar
+                android:id="@+id/rating_bar_id"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                android:numStars="5"
+                android:rating="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/doctor_name_id"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/transaction_date_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rating_bar_id"
+                android:textColor="@color/black"
+                android:text="@string/transaction_date_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/transaction_date_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/rating_bar_id"
+                app:layout_constraintStart_toEndOf="@id/transaction_date_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/reservation_time_value"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+            <TextView
+                android:id="@+id/transaction_type_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_date_txt"
+                android:textColor="@color/black"
+                android:text="@string/transaction_type_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/transaction_type_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/transaction_date_txt"
+                app:layout_constraintStart_toEndOf="@id/transaction_date_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/transaction_type_txt"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/transaction_method_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_type_txt"
+                android:textColor="@color/black"
+                android:text="@string/transaction_method_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/transaction_method_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/transaction_type_txt"
+                app:layout_constraintStart_toEndOf="@id/transaction_method_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/transaction_method_txt"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/transaction_reason_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_method_txt"
+                android:textColor="@color/black"
+                android:text="@string/transaction_reason_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/transaction_reason_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/transaction_method_txt"
+                app:layout_constraintStart_toEndOf="@id/transaction_reason_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/transaction_reason_txt"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/transaction_status_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_reason_txt"
+                android:textColor="@color/black"
+                android:text="@string/transaction_status_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/transaction_status_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/transaction_reason_txt"
+                app:layout_constraintStart_toEndOf="@id/transaction_status_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/transaction_status_txt"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/bank_name_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transaction_status_txt"
+                android:textColor="@color/black"
+                android:text="@string/bank_name_txt"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/bank_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/transaction_status_txt"
+                app:layout_constraintStart_toEndOf="@id/bank_name_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/bank_name_txt"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/bank_sender_name_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bank_name_txt"
+                android:textColor="@color/black"
+                android:text="@string/bank_sender_name"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/bank_sender_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/bank_name_txt"
+                app:layout_constraintStart_toEndOf="@id/bank_sender_name_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/bank_sender_name"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/bank_acc_number_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bank_sender_name_txt"
+                android:textColor="@color/black"
+                android:text="@string/bank_acc_number"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/bank_acc_number_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/bank_sender_name_txt"
+                app:layout_constraintStart_toEndOf="@id/bank_acc_number_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/bank_acc_number"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+
+            <TextView
+                android:id="@+id/bank_transfer_reference_number_txt"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bank_acc_number_txt"
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:text="@string/bank_transfer_reference_number"
+                android:layout_marginTop="8dp"
+                />
+
+            <TextView
+                android:id="@+id/bank_transfer_reference_number_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/bank_acc_number_txt"
+                app:layout_constraintStart_toEndOf="@id/bank_transfer_reference_number_txt"
+                android:layout_marginTop="8dp"
+                android:text="@string/bank_transfer_reference_number"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/blue"
+                />
+
+
+            <TextView
+                android:id="@+id/bank_receipt_link_txt"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bank_transfer_reference_number_txt"
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:text="@string/bank_receipt_link"
+                android:layout_marginTop="8dp"
+                android:textSize="15sp"
+                />
+
+            <ImageView
+                android:id="@+id/bank_receipt_link_value"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/bank_receipt_link_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:scaleType="center"
+                android:text="@string/bank_transfer_reference_number"
+                android:layout_marginStart="10dp"
+                />
+
+
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

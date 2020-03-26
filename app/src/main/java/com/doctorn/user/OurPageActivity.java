@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -71,7 +72,7 @@ public class OurPageActivity extends AppCompatActivity implements OnItemClickInt
     private void getAllArticles(final int current_page) {
         retrofitInterface= RetrofitClientInstance.getRetrofit();
         progressBar.setVisibility(View.VISIBLE);
-        Call<AllArticleModel> call=retrofitInterface.getAllArticle(LoginActivity.userModel.getToken(),current_page,10);
+        Call<AllArticleModel> call=retrofitInterface.getAllArticle(UserAccountActivity.user.getToken(),current_page,10);
         call.enqueue(new Callback<AllArticleModel>() {
             @Override
             public void onResponse(Call<AllArticleModel> call, Response<AllArticleModel> response) {
@@ -79,10 +80,12 @@ public class OurPageActivity extends AppCompatActivity implements OnItemClickInt
                     if(response.body().getArticles().getArticleDataArrayModelList().size()>0){
                         articlesModels.addAll(response.body().getArticles().getArticleDataArrayModelList());
                         adapter.notifyDataSetChanged();
+                        Log.v("TAG","xxxx 1");
                         Toast.makeText(OurPageActivity.this, response.body().getMessages(), Toast.LENGTH_LONG).show();
                     }else if(response.body().getArticles().getArticleDataArrayModelList().size()==0&&current_page==1){
                         emptyData.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
+                        Log.v("TAG","xxxx 2");
 
                     }
                     Toast.makeText(OurPageActivity.this, response.body().getMessages(), Toast.LENGTH_LONG).show();

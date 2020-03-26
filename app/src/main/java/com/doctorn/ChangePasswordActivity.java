@@ -1,5 +1,6 @@
 package com.doctorn;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.doctorn.doctorList.DoctorListActivity;
 import com.doctorn.models.UserModel;
 import com.doctorn.user.LoginActivity;
+import com.doctorn.utils.DailogUtil;
 import com.doctorn.utils.RetrofitClientInstance;
 import com.doctorn.utils.RetrofitInterface;
 import com.fourhcode.forhutils.FUtilsValidation;
@@ -30,6 +33,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     @BindView(R.id.confirm_new_password_input) EditText confirmNewPasswordInput;
     @BindView(R.id.progress_id) ProgressBar progressBar;
     RetrofitInterface retrofitInterface;
+    DailogUtil dailogUtil;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_password);
         ButterKnife.bind(this);
         intent=getIntent();
+        dailogUtil=new DailogUtil();
     }
 
     @OnClick(R.id.change_password_btn)
@@ -64,11 +69,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void changePassword() {
         retrofitInterface = RetrofitClientInstance.getRetrofit();
         progressBar.setVisibility(View.VISIBLE);
-        Call<UserModel> call = retrofitInterface.changePassword(LoginActivity.user.getId()
+        final ProgressDialog progressDialog=dailogUtil.showProgress(ChangePasswordActivity.this,getString(R.string.wait_loading),false);
+        Call<UserModel> call = retrofitInterface.changePassword(DoctorListActivity.user.getUser().getId()
                 , oldPasswordInput.getText().toString()
                 , newPasswordInput.getText().toString()
                 , confirmNewPasswordInput.getText().toString()
-                , LoginActivity.userModel.getToken());
+                , DoctorListActivity.user.getToken());
          call.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -76,11 +82,13 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     Toast.makeText(ChangePasswordActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
                 Log.v(TAG,"rrrrr"+response.body().toString());
                 progressBar.setVisibility(View.GONE);
+                progressDialog.dismiss();
                 finish();
                 }
                 else {
                     Toast.makeText(ChangePasswordActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                     finish();
                 }
             }
@@ -88,6 +96,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
                 Log.v(TAG,"rrrrr"+t.getMessage().toString());
+                progressDialog.dismiss();
             }
         });
 
@@ -99,11 +108,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void changeDoctorPassword() {
         retrofitInterface = RetrofitClientInstance.getRetrofit();
         progressBar.setVisibility(View.VISIBLE);
-        Call<UserModel> call = retrofitInterface.changeDoctorPassword(LoginAsDoctorActivity.user.getId()
+        final ProgressDialog progressDialog=dailogUtil.showProgress(ChangePasswordActivity.this,getString(R.string.wait_loading),false);
+        Call<UserModel> call = retrofitInterface.changeDoctorPassword(SplashActivity.model.getUser().getId()
                 , oldPasswordInput.getText().toString()
                 , newPasswordInput.getText().toString()
                 , confirmNewPasswordInput.getText().toString()
-                , LoginAsDoctorActivity.userModel.getToken());
+                , SplashActivity.model.getToken());
         call.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -112,17 +122,20 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     Log.v(TAG,"rrrrr"+response.body().toString());
                     progressBar.setVisibility(View.GONE);
                     finish();
+                    progressDialog.dismiss();
                 }
                 else {
                     Toast.makeText(ChangePasswordActivity.this, response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     finish();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
                 Log.v(TAG,"rrrrr"+t.getMessage().toString());
+                progressDialog.dismiss();
             }
         });
 

@@ -19,6 +19,8 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+
+
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/progress"
         style="@style/AVLoadingIndicatorView.Small"
@@ -29,6 +31,7 @@
         app:indicatorName="BallSpinFadeLoaderIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
 </android.support.constraint.ConstraintLayout>

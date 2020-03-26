@@ -1,6 +1,7 @@
 package com.doctorn.doctorAccount.RegisterInfoFragemt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +17,10 @@ import android.widget.Toast;
 
 import com.doctorn.BalanceActivity;
 import com.doctorn.ChangePasswordActivity;
+import com.doctorn.EditDoctorProfileActivity;
 import com.doctorn.EditProfileActivity;
 import com.doctorn.R;
 import com.doctorn.SettingActivity;
-import com.doctorn.models.User;
 import com.doctorn.models.UserModel;
 import com.doctorn.user.LoginActivity;
 import com.doctorn.utils.PreferenceHelper;
@@ -30,6 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.support.constraint.Constraints.TAG;
 
 public class AccountRegisterInfoFragment extends Fragment {
@@ -39,12 +41,19 @@ public class AccountRegisterInfoFragment extends Fragment {
     ConstraintLayout changePassword, updateProfile;
     TextView email, phone, age, gender;
     ImageView arrowEngImg,arrowArImg,arrowAr1,arrowAr2,arrowAr3,arrowAr4,arrowEng1,arrowEng2,arrowEng3,arrowEng4;
-    User user;
+    UserModel user;
     RetrofitInterface retrofitInterface;
+    SharedPreferences preferences,preferences1;
+    SharedPreferences.Editor editor,editor1;
+    int flag;
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.account_register_info_fragment, container, false);
+        preferences=getActivity().getSharedPreferences("user_data",MODE_PRIVATE);
+        editor=preferences.edit();
+        preferences1=getActivity().getSharedPreferences("doctor_data",MODE_PRIVATE);
+        editor1=preferences1.edit();
         balance = view.findViewById(R.id.cn4);
         setting = view.findViewById(R.id.cn2);
         logout=view.findViewById(R.id.cn3);
@@ -95,29 +104,28 @@ public class AccountRegisterInfoFragment extends Fragment {
         if (intent.hasExtra("update_data")) {
             Log.v(TAG,"ddddddddd"+intent.getParcelableExtra("update_data").toString());
             user = intent.getParcelableExtra("update_data");
-            email.setText(user.getEmail());
-            phone.setText(user.getUserPhone());
-            Log.v(TAG,"user "+user.getName());
-            age.setText(String.valueOf(user.getUserAge()));
-            gender.setText(user.getUserGender());
+            email.setText(user.getUser().getEmail());
+            phone.setText(user.getUser().getUserPhone());
+            Log.v(TAG,"user "+user.getUser().getName());
+            age.setText(String.valueOf(user.getUser().getUserAge()));
+            gender.setText(user.getUser().getUserGender());
         }
-
         else if(intent.hasExtra("doctor_data")){
              user=intent.getParcelableExtra("doctor_data");
-            email.setText(user.getEmail());
-            phone.setText(user.getUserPhone());
-            age.setText(String.valueOf(user.getUserAge()));
-            gender.setText(user.getUserGender());
-
+            email.setText(user.getUser().getEmail());
+            phone.setText(user.getUser().getUserPhone());
+            age.setText(String.valueOf(user.getUser().getUserAge()));
+            gender.setText(user.getUser().getUserGender());
+            flag=2;
 
         }else if(intent.hasExtra("user_data")){
              user=intent.getParcelableExtra("user_data");
-            email.setText(user.getEmail());
-            phone.setText(user.getUserPhone());
-            age.setText(String.valueOf(user.getUserAge()));
-            gender.setText(user.getUserGender());
+            email.setText(user.getUser().getEmail());
+            phone.setText(user.getUser().getUserPhone());
+            age.setText(String.valueOf(user.getUser().getUserAge()));
+            gender.setText(user.getUser().getUserGender());
+            flag=1;
         }
-
 
 
         balance.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +178,7 @@ public class AccountRegisterInfoFragment extends Fragment {
 
                }else  if(intent.hasExtra("doctor_data")){
                    Log.v(TAG,"update doctorrrrrrr");
-                   Intent intent1=new Intent(getContext(), EditProfileActivity.class);
+                   Intent intent1=new Intent(getContext(), EditDoctorProfileActivity.class);
                    intent1.setAction("doctor");
                    startActivity(intent1);
                }
@@ -190,21 +198,6 @@ public class AccountRegisterInfoFragment extends Fragment {
     }
 
 
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        Intent intent=getActivity().getIntent();
-//        if(intent.hasExtra("update_data")){
-//            user=intent.getParcelableExtra("update_data");
-//            email.setText(user.getEmail());
-//            phone.setText(user.getUserPhone());
-//            age.setText(String.valueOf(user.getUserAge()));
-//            gender.setText(user.getUserGender());
-//
-//        }
-//    }
-
     private void logoutCalling() {
 
         retrofitInterface= RetrofitClientInstance.getRetrofit();
@@ -215,6 +208,18 @@ public class AccountRegisterInfoFragment extends Fragment {
                 if(response.body().isStatus()){
                     Toast.makeText(getContext(), response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getContext(), LoginActivity.class));
+//                    if(flag==1){
+//                        preferences=getActivity().getSharedPreferences("user_data",MODE_PRIVATE);
+//                        editor=preferences.edit();
+//                        editor.clear().commit();
+//
+//                    }else if(flag==2){
+//                        preferences=getActivity().getSharedPreferences("doctor_data",MODE_PRIVATE);
+//                        editor=preferences.edit();
+//                        editor.clear().commit();
+//                    }
+                    editor.clear().commit();
+                    editor1.clear().commit();
                 }else {
                     Toast.makeText(getContext(), response.body().getMessages().toString(), Toast.LENGTH_SHORT).show();
 
@@ -227,6 +232,11 @@ public class AccountRegisterInfoFragment extends Fragment {
             }
         });
 
+
+
+
+
+
     }
 
 
@@ -237,10 +247,10 @@ public class AccountRegisterInfoFragment extends Fragment {
         if (intent.hasExtra("update_data")) {
             Log.v(TAG,"ddddddddd"+intent.getParcelableExtra("update_data").toString());
             user = intent.getParcelableExtra("update_data");
-            email.setText(user.getEmail());
-            phone.setText(user.getUserPhone());
-            age.setText(String.valueOf(user.getUserAge()));
-            gender.setText(user.getUserGender());
+            email.setText(user.getUser().getEmail());
+            phone.setText(user.getUser().getUserPhone());
+            age.setText(String.valueOf(user.getUser().getUserAge()));
+            gender.setText(user.getUser().getUserGender());
         }
     }
 }

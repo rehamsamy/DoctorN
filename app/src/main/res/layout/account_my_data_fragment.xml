@@ -22,7 +22,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/cn1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,7 @@
         <TextView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/specialist_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,42 +54,23 @@
             android:textColor="@color/pupler"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/specialist_id"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="15dp"
             android:layout_gravity="start"
             android:textAlignment="viewStart"
             android:textSize="12sp"/>
 
 
-        <ImageView
-            android:id="@+id/edit_data_arrow_id"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toTopOf="@id/specialist_value_id"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/arrow_img"/>
 
 
-        <TextView
-            android:id="@+id/specialist_subject_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/specialist_value_id"
-            app:layout_constraintTop_toBottomOf="@id/specialist_value_id"
-            android:layout_marginTop="8dp"
-            android:textAlignment="viewStart"
-            android:layout_gravity="start"
-            android:text="@string/privacy_policy_subject"
-            />
+
 
     </android.support.constraint.ConstraintLayout>
 
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/cn2"
         app:layout_constraintStart_toStartOf="@id/cn1"
         app:layout_constraintEnd_toEndOf="@id/cn1"
@@ -101,6 +83,7 @@
         <TextView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/study_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,33 +97,23 @@
             android:id="@+id/study_value_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/specialist_value"
             android:textColor="@color/pupler"
-            app:layout_constraintTop_toTopOf="@id/study_id"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/study_id"
             android:layout_marginStart="15dp"
-            android:layout_gravity="start"
             android:textSize="12sp"/>
 
 
-        <TextView
-            android:id="@+id/study_value_subject_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/study_value_id"
-            app:layout_constraintTop_toBottomOf="@id/study_value_id"
-            android:layout_marginTop="8dp"
-            android:textAlignment="viewStart"
-            android:layout_gravity="start"
-            android:text="@string/privacy_policy_subject"
-            />
+
 
     </android.support.constraint.ConstraintLayout>
 
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/cn3"
         app:layout_constraintStart_toStartOf="@id/cn1"
         app:layout_constraintEnd_toEndOf="@id/cn1"
@@ -154,6 +127,7 @@
         <TextView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/job_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -178,24 +152,14 @@
             android:textSize="12sp"/>
 
 
-        <TextView
-            android:id="@+id/study_subject_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/job_value_id"
-            app:layout_constraintTop_toBottomOf="@id/job_value_id"
-            android:layout_marginTop="8dp"
-            android:textAlignment="viewStart"
-            android:gravity="start"
-            android:text="@string/privacy_policy_subject"
-            />
+
 
     </android.support.constraint.ConstraintLayout>
 
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/cn4"
         app:layout_constraintStart_toStartOf="@id/cn1"
         app:layout_constraintEnd_toEndOf="@id/cn1"
@@ -210,6 +174,7 @@
         <TextView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/language_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -225,8 +190,9 @@
             android:layout_height="wrap_content"
             android:text="@string/specialist_value"
             android:textColor="@color/pupler"
-            app:layout_constraintTop_toTopOf="@id/language_id"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/language_id"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="15dp"
             android:textSize="12sp"
             android:textAlignment="viewStart"
